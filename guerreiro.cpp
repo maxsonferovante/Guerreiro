@@ -1,14 +1,14 @@
-#include"Guerreiro.h"
-
-Guerreiro::Guerreiro ( string N, int S, int A, int I, int L, int M);{
-	void setNomedoGuerreiro (N);
-	void setStrenghtdoGuerreiro (S);
-	void setAgilitydoGuerreiro (A);
-	void setIntelligencedoGuerreiro (I);
-	void setLifedoGuerreiro (L);
-	void setManadoGuerreiro (M);
+#include "guerreiro.h"
+#include <string>
+Guerreiro::Guerreiro( std::string N, int S, int A, int I, int L, int M){
+	setNomedoGuerreiro (N);
+	setStrenghtdoGuerreiro (S);
+	setAgilitydoGuerreiro (A);
+ 	setIntelligencedoGuerreiro (I);
+	setLifedoGuerreiro (L);
+	setManadoGuerreiro (M);
 }
-void Guerreiro::setNomedoGuerreiro ( string nome){
+void Guerreiro::setNomedoGuerreiro ( std::string nome){
 	nomedoGuerreiro = nome;
 }
 void Guerreiro::setStrenghtdoGuerreiro ( int S){
@@ -56,6 +56,16 @@ void Guerreiro::treinarGuerreiro (){
 	mana -=30;
 }
 void Guerreiro::regenarGuerreiro (){
-	cout<<"O Guerreiro "<<getNomedoGuerreiro()<<" dorme para gerenear nama gasta no dia, mas pelo descanso ganha +25 de mana...";
+	cout<<"O Guerreiro "<<getNomedoGuerreiro()<<" descansa para gerenear nama gasta no dia, mas pelo descanso ganha +25 de mana...";
 	mana +=25;
 	}
+bool Guerreiro::lutarGuerreiro (){
+	cout<<"Nas lutas o Guerreiro perde 45 de mana e sua vida é compremetida em 25%...\n O Guerreiro esta luntando...";
+	mana -=45;
+	life = life - life/4;
+}
+bool Guerreiro::alimentarGuerreiro(){
+	cout<<"Ao alimentar-se o Guerreiro ganha +13 de mana e +24 de vida";
+	mana +=13;
+	life +=24;
+}

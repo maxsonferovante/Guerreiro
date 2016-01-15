@@ -14,13 +14,8 @@ class Guerreiro
 		int mana;
 		string nomedoGuerreiro;
 		
-		const int strenghtMaxima = 100;
-		const int agilityMaxima = 100;
-		const int intelligenceMaxima = 100;
-		const int lifeMaxima = 100;
-		const int manaMaxima = 100;
 	public:
-		Guerreiro ( string, int, int, int, int, int, int);
+		Guerreiro ( string, int, int, int, int, int);
 		void setNomedoGuerreiro ( string );
 		void setStrenghtdoGuerreiro ( int );
 		void setAgilitydoGuerreiro ( int );
@@ -37,5 +32,6 @@ class Guerreiro
 		
 		void treinarGuerreiro ();
 		void regenarGuerreiro ();
-		
+		bool lutarGuerreiro ();
+		bool alimentarGuerreiro();
 };
