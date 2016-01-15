@@ -36,5 +36,6 @@ class Guerreiro
 		int getManadoGuerreiro ();
 		
 		void treinarGuerreiro ();
-		bool regenarGuerreiro ();
+		void regenarGuerreiro ();
+		
 };
