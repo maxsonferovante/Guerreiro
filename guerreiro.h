@@ -6,14 +6,6 @@ using namespace std;
 
 class Guerreiro
 {
-	private:
-		int strenght;
-		int agility;
-		int intelligence;
-		int life;
-		int mana;
-		string nomedoGuerreiro;
-		
 	public:
 		Guerreiro ( string, int, int, int, int, int);
 		void setNomedoGuerreiro ( string );
@@ -34,4 +26,13 @@ class Guerreiro
 		void regenarGuerreiro ();
 		bool lutarGuerreiro ();
 		bool alimentarGuerreiro();
+	
+	private:
+		int strenght;
+		int agility;
+		int intelligence;
+		int life;
+		int mana;
+		string nomedoGuerreiro;
+		
 };
