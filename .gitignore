@@ -1,6 +1,10 @@
 /.project
 /Guerreiro.exe
 /guerreiro.o
+/guerreiro.layout
 /main.o
 /Makefile.win
 /Guerreiro.dev
+
+
+
