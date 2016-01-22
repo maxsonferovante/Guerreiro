@@ -1,5 +1,10 @@
-#include "guerreiro.h"
+#include<iostream>
+#include "Guerreiro.h"
 #include <string>
+
+using std::string;
+using std::cout;
+using std::cin;
 
 Guerreiro::Guerreiro(){
 	setNomedoGuerreiro ("Sem nome");
@@ -8,41 +13,61 @@ Guerreiro::Guerreiro(){
  	setIntelligencedoGuerreiro (20);
 	setLifedoGuerreiro (1000);
 	setManadoGuerreiro(800);
+	setArmorGuerreiro(66);
+	setDamageGuerreiro(67);
 
 };
-Guerreiro::Guerreiro( std::string N, int S, int A, int I, int L, int M){
+Guerreiro::Guerreiro( std::string N, int S, int A, int I, int L, int M, int ar), int da{
 	setNomedoGuerreiro (N);
 	setStrenghtdoGuerreiro (S);
 	setAgilitydoGuerreiro (A);
  	setIntelligencedoGuerreiro (I);
 	setLifedoGuerreiro (L);
 	setManadoGuerreiro (M);
+	setArmorGuerreiro(ar );
+	setDamageGuerreiro(da);
+}
+Guerreiro::~Guerreiro(){
 }
 void Guerreiro::setNomedoGuerreiro ( std::string nome){
-	
+		nomedoGuerreiro = nome;
 }
 
 void Guerreiro::setStrenghtdoGuerreiro ( int S){
-	if ()
-	strenght = S;
+	if (S> 0){
+			strenght = S;
+		}
+	
 }
 void Guerreiro::setAgilitydoGuerreiro ( int A){
-	agility = A;
+	if(A>0){
+		agility = A;
+	}
 }
 void Guerreiro::setIntelligencedoGuerreiro ( int I){
-	intelligence = I;
+	if(I>0){
+		intelligence = I;
+	}
 }
 void Guerreiro::setLifedoGuerreiro ( int L){
-	life = L;
+	if(L>0){
+		life = L;
+	}
 }
 void Guerreiro::setManadoGuerreiro ( int M){
-	mana = M;
+	if(M>0){
+		mana = M;
+	}
 }
 void Guerreiro::setArmorGuerreiro( int ar){
-	armor = ar;
+	if(ar>0){
+		armor = ar;
+	}
 }
 void Guerreiro::setDamageGuerreiro( int da){
-	damage = da;
+	if(da>0){
+		damage = da;
+	}
 }
 
 string Guerreiro::getNomedoGuerreiro (){
@@ -85,7 +110,7 @@ void Guerreiro::regenarGuerreiro (){
 	mana +=25;
 	}
 bool Guerreiro::atacarGuerreiro (){
-	cout<<"Nas lutas o Guerreiro perde 45 de mana e sua vida é compremetida em 25%...\n O Guerreiro esta luntando...";
+	cout<<"Nas lutas o Guerreiro perde 45 de mana e sua vida Ã© compremetida em 25%...\n O Guerreiro esta luntando...";
 	mana -=45;
 	life = life - life/4;
 }
