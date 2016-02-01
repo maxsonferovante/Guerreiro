@@ -7,10 +7,16 @@ class Guerreiro
 {
 public:
 	Guerreiro();
-	Guerreiro (string, int, int, int, int, int, int, int);
+	Guerreiro (const string &, int, int, int);
 	~Guerreiro();
 		
-	void setNomedoGuerreiro ( string );
+	void treinarGuerreiro ();
+	void regenarGuerreiro ();
+	void atacarGuerreiro ();
+	void alimentarGuerreiro();
+    void exibirAtributos();
+    
+    void setNomedoGuerreiro ( string );
 	void setStrenghtdoGuerreiro ( int );
 	void setAgilitydoGuerreiro ( int );
 	void setIntelligencedoGuerreiro ( int );
@@ -27,11 +33,6 @@ public:
 	int getManadoGuerreiro ();
 	int getArmorGuerreiro ();
 	int getDamageGuerreiro ();
-		
-	void treinarGuerreiro ();
-	void regenarGuerreiro ();
-	void atacarGuerreiro ();
-	void alimentarGuerreiro();
 	
 private:
 	string nomedoGuerreiro;
@@ -42,8 +43,5 @@ private:
 	int mana;
 	int armor;
 	int damage;
-		
-	string habilidades[4];
-	string item[6];
 };
 

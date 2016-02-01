@@ -1,15 +1,21 @@
 #include<iostream>
-#include "Guerreiro.h"
+#include "Guerreiro.hpp"
 
-using std::string;
+
 using std::cout;
 using std::cin;
 
-int main{
-	Guerreiro g = Guerreiro();
-
-	g.setNomedoGuerreiro("maxson");
-	cout<<g.getNomedoGuerreiro();
-
+int main(){
+	Guerreiro g("maxson", 1220, 600, 45);
+    
+    g.exibirAtributos();
+    
+    g.treinarGuerreiro();
+    g.alimentarGuerreiro();
+    g.regenarGuerreiro();
+    
+    g.exibirAtributos();
+    
+    
 	return 0;
 }
