@@ -4,12 +4,12 @@
 
 using std::string;
 using std::cout;
-using std::cin;
 
 Guerreiro::Guerreiro()
 :nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33)
 {
 }
+
 Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da)
 :strenght(33), agility(33),intelligence(33),armor(3), damage(33)
 {
@@ -78,33 +78,33 @@ void Guerreiro::setDamageGuerreiro( int da){
         this->damage = 33;
 }
 
-string Guerreiro::getNomedoGuerreiro (){
+string Guerreiro::getNomedoGuerreiro () const{
 	return this->nomedoGuerreiro;	
 }
-int Guerreiro::getStrenghtdoGuerreiro (){
+int Guerreiro::getStrenghtdoGuerreiro () const{
 	return this->strenght;
 }
-int Guerreiro::getAgilitydoGuerreiro (){
+int Guerreiro::getAgilitydoGuerreiro () const{
 	return this->agility;
 }
-int Guerreiro::getIntelligencedoGuerreiro (){
+int Guerreiro::getIntelligencedoGuerreiro () const{
 	return this->intelligence;
 }
-int Guerreiro::getLifedoGuerreiro (){
+int Guerreiro::getLifedoGuerreiro () const{
 	return this->life;
 }
-int Guerreiro::getManadoGuerreiro (){
+int Guerreiro::getManadoGuerreiro () const{
 	return this->mana;
 }
-int Guerreiro::getArmorGuerreiro(){
+int Guerreiro::getArmorGuerreiro() const{
 	return this->armor;
 }
-int Guerreiro::getDamageGuerreiro(){
+int Guerreiro::getDamageGuerreiro() const{
 	return this->damage;
 }
 void Guerreiro::treinarGuerreiro (){
-	cout<<"\n\nTodos os dias o Guerreiro "<<getNomedoGuerreiro()<<" treina cada um de seus atributos...";
-	cout<<"\nO treino foi concluido e o Guerreiro ganhou +2 em cada atributo e gastou 30 de mana.\nDescanse agora!";
+	cout<<"\n\nTodos os dias o Guerreiro "<<this->nomedoGuerreiro<<" treina cada um de seus atributos...";
+	cout<<"\nO treino foi concluido e o Guerreiro ganhou +2 em cada atributo e gastou 30 de mana.\nDescanse agora!\n";
 	
 	this->strenght +=2;
 	this->agility +=2;
@@ -114,11 +114,12 @@ void Guerreiro::treinarGuerreiro (){
 	this->mana -=30;
 }
 void Guerreiro::regenarGuerreiro (){
-	cout<<"\n\nO Guerreiro "<<getNomedoGuerreiro()<<" descansa para gerenear nama gasta no dia, mas pelo descanso ganha +25 de mana...";
+	cout<<"\n\nO Guerreiro "<<this->nomedoGuerreiro<<" descansa para gerenear nama gasta no dia, ganha +25 de mana...";
 	this->mana +=25;
 	}
 void Guerreiro::atacarGuerreiro (){
-	cout<<"\n\nNas lutas o Guerreiro perde 45 de mana e sua vida é compremetida em 25%...\n O Guerreiro esta luntando...";
+	cout<<"\n\nNas lutas o Guerreiro "<<this->nomedoGuerreiro<<" perde 45 de mana e sua vida é compremetida em 25%...\n";
+    cout<<"O Guerreiro esta luntando...\n";
 	this->mana -=45;
 	this->life = life - life/4;
 }
@@ -127,7 +128,7 @@ void Guerreiro::alimentarGuerreiro(){
 	this->mana +=13;
 	this->life +=24;
 }
-void Guerreiro::exibirAtributos(){
+void Guerreiro::exibirAtributos() const{
     cout<<"\n\nNome: "<<this->nomedoGuerreiro;
     cout<<"\nStrenght: "<<this->strenght;
     cout<<"\nAgility: "<<this->agility;
@@ -135,5 +136,5 @@ void Guerreiro::exibirAtributos(){
     cout<<"\nLife: "<<this->life;
     cout<<"\nMana: "<<this->mana;
     cout<<"\nArmor: "<<this->armor;
-    cout<<"\nDamage: "<<this->damage;
-    }
+    cout<<"\nDamage: "<<this->damage<<std::endl;
+}

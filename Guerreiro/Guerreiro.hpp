@@ -14,7 +14,7 @@ public:
 	void regenarGuerreiro ();
 	void atacarGuerreiro ();
 	void alimentarGuerreiro();
-    void exibirAtributos();
+    void exibirAtributos() const;
     
     void setNomedoGuerreiro ( string );
 	void setStrenghtdoGuerreiro ( int );
@@ -25,14 +25,14 @@ public:
 	void setArmorGuerreiro ( int );
 	void setDamageGuerreiro ( int );
 		
-	string getNomedoGuerreiro ();
-	int getStrenghtdoGuerreiro ();
-	int getAgilitydoGuerreiro ();
-	int getIntelligencedoGuerreiro ();
-	int getLifedoGuerreiro ();
-	int getManadoGuerreiro ();
-	int getArmorGuerreiro ();
-	int getDamageGuerreiro ();
+	string getNomedoGuerreiro () const;
+	int getStrenghtdoGuerreiro () const;
+	int getAgilitydoGuerreiro () const;
+	int getIntelligencedoGuerreiro () const;
+	int getLifedoGuerreiro () const;
+	int getManadoGuerreiro () const;
+	int getArmorGuerreiro () const;
+	int getDamageGuerreiro () const;
 	
 private:
 	string nomedoGuerreiro;
