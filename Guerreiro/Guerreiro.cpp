@@ -5,13 +5,16 @@
 using std::string;
 using std::cout;
 
+int Guerreiro::quantidadedeGuerreiros = 0;
+
 Guerreiro::Guerreiro()
 :nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33)
 {
+
 }
 
 Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da)
-:strenght(33), agility(33),intelligence(33),armor(3), damage(33)
+:strenght(33), agility(33),intelligence(33),armor(3)
 {
         this->nomedoGuerreiro = N;
         if(Li >= 0)
@@ -28,6 +31,16 @@ Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da)
             this->damage = Da;
         else
             this->damage = 33;
+}
+Guerreiro::Guerreiro(const Guerreiro &outro){
+    this->nomedoGuerreiro = outro.nomedoGuerreiro;
+    this->strenght = outro.strength;
+    this->agility = outro.agility;
+    this-intelligence = outro.intelligence;
+    this->life = outro.life;
+    this->mana = outro.armor;
+    this->armor = outro.armor;
+    this->damage = outro.damage;
 }
 Guerreiro::~Guerreiro(){
 }

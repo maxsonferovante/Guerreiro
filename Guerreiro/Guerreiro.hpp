@@ -5,8 +5,10 @@ using std::string;
 
 class Guerreiro
 {
+
 public:
 	Guerreiro();
+    Guerreiro(const Guerreiro &);
 	Guerreiro (const string &, int, int, int);
 	~Guerreiro();
 		
@@ -43,5 +45,6 @@ private:
 	int mana;
 	int armor;
 	int damage;
+    static int quantidadedeGuerreiros;
 };
 
