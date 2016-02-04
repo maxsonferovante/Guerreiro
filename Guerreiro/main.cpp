@@ -7,17 +7,17 @@ using std::cin;
 
 int main(){
 	Guerreiro g("MigoTiti", 1220, 600, 45);
-    int resistencia = 50;
+    int armor = 40;
     g.exibirAtributos();
     
-    g.ataqueFisicodoGuerreiro(resistencia);
-    cout<<"resistencia: "<<resistencia;
+    g.ataqueFisicodoGuerreiro(armor);
+    cout<<"resistencia: "<<armor;
     
-    g.ataqueMagicodoGuerreiro(resistencia);
-    cout<<"resistencia: "<<resistencia;
+    g.ataqueMagicodoGuerreiro(armor);
+    cout<<"resistencia: "<<armor;
     
-    g.ataqueMagicodoGuerreiro(resistencia);
-    cout<<"resistencia: "<<resistencia;
+    g.ataqueMagicodoGuerreiro(armor);
+    cout<<"resistencia: "<<armor;
     
 	return 0;
 }
