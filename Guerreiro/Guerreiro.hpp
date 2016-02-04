@@ -5,7 +5,6 @@ using std::string;
 
 class Guerreiro
 {
-
 public:
 	Guerreiro();
     Guerreiro(const Guerreiro &);
@@ -14,9 +13,12 @@ public:
 		
 	void treinarGuerreiro ();
 	void regenarGuerreiro ();
-	void atacarGuerreiro ();
+	void ataqueFisicodoGuerreiro (int &);
+    void ataqueMagicodoGuerreiro (int &);
+    bool defesadoGuerreiro( int );
 	void alimentarGuerreiro();
     void exibirAtributos() const;
+
     
     void setNomedoGuerreiro ( string );
 	void setStrenghtdoGuerreiro ( int );
@@ -45,6 +47,7 @@ private:
 	int mana;
 	int armor;
 	int damage;
-    static int quantidadedeGuerreiros;
+ 
+   static int quantidadedeGuerreiros;
 };
 
