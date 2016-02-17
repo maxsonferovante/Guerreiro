@@ -5,7 +5,10 @@ class Data
     
 public:
     Data(int = 1, int = 1 , int = 1900);
+    Data(const Data &);
     ~Data();
+    
+    void exibir () const;
 private:
         int month;
         int day;

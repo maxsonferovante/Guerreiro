@@ -1,5 +1,5 @@
 #include<iostream>
-#include "Guerreiro.hpp"
+#include "Guerreiro.h"
 #include <string>
 
 using std::string;
@@ -17,13 +17,12 @@ const int Guerreiro::decrementoLife = 13;
 const int Guerreiro::decrementoMana = 24;
 
 Guerreiro::Guerreiro()
-:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33)
+:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33), datadeNascimento()
 {
     quantidadedeGuerreiros++;
 }
-
-Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da)
-:strenght(33), agility(33),intelligence(33),armor(3)
+Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da, int dia, int mes, int ano)
+:strenght(33), agility(33),intelligence(33),armor(3), datadeNascimento(dia, mes, ano)
 {
         this->nomedoGuerreiro = N;
         this->life = (Li > 0) ? Li : 1200;
@@ -32,7 +31,9 @@ Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da)
         
         quantidadedeGuerreiros++;
 }
-Guerreiro::Guerreiro(const Guerreiro &outro){
+Guerreiro::Guerreiro(const Guerreiro &outro, const Data &dataOutro)
+:datadeNascimento(dataOutro)
+{
     this->nomedoGuerreiro = outro.nomedoGuerreiro;
     this->strenght = outro.strenght;
     this->agility = outro.agility;
@@ -41,9 +42,9 @@ Guerreiro::Guerreiro(const Guerreiro &outro){
     this->mana = outro.armor;
     this->armor = outro.armor;
     this->damage = outro.damage;
-
     quantidadedeGuerreiros++;
 }
+
 Guerreiro::~Guerreiro(){
     quantidadedeGuerreiros--;
 }
@@ -182,4 +183,20 @@ void Guerreiro::exibirAtributos() const{
     cout<<"\nMana: "<<this->mana;
     cout<<"\nArmor: "<<this->armor;
     cout<<"\nDamage: "<<this->damage<<std::endl;
+    
+    datadeNascimento.exibir();
+}
+
+void Guerreiro::atualizacaodoEquipamento(const string &nomedoEquipamento)
+{
+        if (nomedoGuerreiro.compare("escudo") == 0)
+            this->armor += this->incrementoArmor/3;
+        else
+            if (nomedoEquipamento.compare("espada") == 0)
+                this->damage += this->incrementoDamage/3;
+            else
+                if (nomedoEquipamento.compare("botas") == 0)
+                    this->agility += this->incrementoAgility/3;
+                else
+                    std::cout<<"\nEquipamento não reconhecido.\n";
 }

@@ -1,12 +1,12 @@
 #include<iostream>
-#include "Guerreiro.hpp"
+#include "Guerreiro.h"
 
 
 using std::cout;
 using std::cin;
 
 int main(){
-	Guerreiro g("MigoTiti", 1220, 600, 45);
+	Guerreiro g("MigoTiti", 1220, 600, 45, 14, 10, 1994);
     int armor = 40;
     g.exibirAtributos();
     

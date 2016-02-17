@@ -1,15 +1,17 @@
 #ifndef GUERREIRO_H
 #define GUERREIRO_H
-#include <string>
 
+#include <string>
+#include "Data.h"
 using std::string;
 
 class Guerreiro
 {
 public:
     Guerreiro();
-    Guerreiro(const Guerreiro&);
-    Guerreiro(const string&, int, int, int);
+    Guerreiro(const string&, int, int, int, int, int, int );
+    Guerreiro(const Guerreiro&, const Data&);
+
     ~Guerreiro();
 
     void treinarGuerreiro();
@@ -19,6 +21,7 @@ public:
     bool defesadoGuerreiro(int);
     void alimentarGuerreiro();
     void exibirAtributos() const;
+    static void atualizacaodoEquipamento(const string &);
 
     void setNomedoGuerreiro(string);
     void setStrenghtdoGuerreiro(int);
@@ -47,6 +50,7 @@ private:
     int mana;
     int armor;
     int damage;
+    const Data datadeNascimento;
 
     const static int incrementoStrenght;
     const static int incrementoAgility;
