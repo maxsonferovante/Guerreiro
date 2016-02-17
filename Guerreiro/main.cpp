@@ -6,18 +6,17 @@ using std::cout;
 using std::cin;
 
 int main(){
-	Guerreiro g("MigoTiti", 1220, 600, 45, 14, 10, 1994);
+	Guerreiro migo("MigoTiti", 1000, 300, 25, 21, 4, 1997);
+    Guerreiro max("Max", 1220, 600, 45, 14, 10, 1994);
+
     int armor = 40;
-    g.exibirAtributos();
+
+    migo.exibirAtributos();
+    max.exibirAtributos();
+
+    Guerreiro::ordenarArmaduraVestida();
+    Guerreiro::desordenarArmaduraVestida();
     
-    g.ataqueFisicodoGuerreiro(armor);
-    cout<<"resistencia: "<<armor;
-    
-    g.ataqueMagicodoGuerreiro(armor);
-    cout<<"resistencia: "<<armor;
-    
-    g.ataqueMagicodoGuerreiro(armor);
-    cout<<"resistencia: "<<armor;
-    
+        
 	return 0;
 }

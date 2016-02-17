@@ -1,4 +1,5 @@
 #include<iostream>
+#include<windows.h>
 #include "Guerreiro.h"
 #include <string>
 
@@ -15,6 +16,8 @@ const int Guerreiro::incrementoArmor  = 2;
 const int Guerreiro::incrementoDamage = 2;
 const int Guerreiro::decrementoLife = 13;
 const int Guerreiro::decrementoMana = 24;
+
+bool Guerreiro::armaduraVestida = false;
 
 Guerreiro::Guerreiro()
 :nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33), datadeNascimento()
@@ -186,17 +189,23 @@ void Guerreiro::exibirAtributos() const{
     
     datadeNascimento.exibir();
 }
-
-void Guerreiro::atualizacaodoEquipamento(const string &nomedoEquipamento)
+void Guerreiro::ordenarArmaduraVestida()
 {
-        if (nomedoGuerreiro.compare("escudo") == 0)
-            this->armor += this->incrementoArmor/3;
-        else
-            if (nomedoEquipamento.compare("espada") == 0)
-                this->damage += this->incrementoDamage/3;
-            else
-                if (nomedoEquipamento.compare("botas") == 0)
-                    this->agility += this->incrementoAgility/3;
-                else
-                    std::cout<<"\nEquipamento não reconhecido.\n";
+    if (armaduraVestida == false)
+    {
+        cout<<"\nSeus guerreiros estao sem suas armaduras.\n Foi ordenado o vestimento da armadura ... \n";
+        Sleep(3000);
+        armaduraVestida = true;
+    }
+    cout<<"\Todos os guerreiros estao vestido suas armaduras...\n";
+}
+void Guerreiro::desordenarArmaduraVestida()
+{
+    if (armaduraVestida == true)
+    {
+            cout<<"\nSeus guerreiros estao guardando suas armaduras...\n";
+            Sleep(3000);
+            cout<<"\nArmaduras guardadas...\n";
+            armaduraVestida = false;
+    }
 }

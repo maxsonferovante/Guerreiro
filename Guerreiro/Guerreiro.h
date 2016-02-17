@@ -21,7 +21,9 @@ public:
     bool defesadoGuerreiro(int);
     void alimentarGuerreiro();
     void exibirAtributos() const;
-    static void atualizacaodoEquipamento(const string &);
+    
+    static void ordenarArmaduraVestida();
+    static void desordenarArmaduraVestida();
 
     void setNomedoGuerreiro(string);
     void setStrenghtdoGuerreiro(int);
@@ -51,7 +53,9 @@ private:
     int armor;
     int damage;
     const Data datadeNascimento;
-
+    
+    static bool armaduraVestida;
+    
     const static int incrementoStrenght;
     const static int incrementoAgility;
     const static int incrementoIntelligence;
