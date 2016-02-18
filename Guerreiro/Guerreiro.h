@@ -3,14 +3,15 @@
 
 #include <string>
 #include "Data.h"
+#include "Espada.h"
 using std::string;
 
 class Guerreiro
 {
 public:
     Guerreiro();
-    Guerreiro(const string&, int, int, int, int, int, int );
-    Guerreiro(const Guerreiro&, const Data&);
+    Guerreiro(const string&, int, int, int, int, int, int ,string, float, bool);
+    Guerreiro(const Guerreiro &, const Data &, const Espada &);
 
     ~Guerreiro();
 
@@ -53,6 +54,7 @@ private:
     int armor;
     int damage;
     const Data datadeNascimento;
+    const Espada espadadoGuerreiro;
     
     static bool armaduraVestida;
     

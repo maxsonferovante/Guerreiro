@@ -8,7 +8,7 @@ public:
     Data(const Data &);
     ~Data();
     
-    void exibir () const;
+    void exibirData () const;
 private:
         int month;
         int day;

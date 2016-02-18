@@ -27,7 +27,7 @@ int Data::checkday(int dia) const
     std::cout<<"Dia Invalido.\n";
     return 1;
 }
-void Data::exibir() const
+void Data::exibirData() const
 {
     std::cout<<"Nascimento: "<<this->day<<"/"<<this->month<<"/"<<this->year<<std::endl;
 }

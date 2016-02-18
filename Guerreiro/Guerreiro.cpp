@@ -20,22 +20,21 @@ const int Guerreiro::decrementoMana = 24;
 bool Guerreiro::armaduraVestida = false;
 
 Guerreiro::Guerreiro()
-:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33), datadeNascimento()
+:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33), datadeNascimento(), espadadoGuerreiro()
 {
     quantidadedeGuerreiros++;
 }
-Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da, int dia, int mes, int ano)
-:strenght(33), agility(33),intelligence(33),armor(3), datadeNascimento(dia, mes, ano)
+Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da, int dia, int mes, int ano, string tipo, float nome, bool emp)
+:strenght(33), agility(33),intelligence(33),armor(3), datadeNascimento(dia, mes, ano), espadadoGuerreiro(tipo, nome, emp)
 {
         this->nomedoGuerreiro = N;
         this->life = (Li > 0) ? Li : 1200;
         this->mana = (Ma > 0) ? Ma : 600;
-        this->damage = (Da > 0) ? Da : 33;
-        
+        this->damage = (Da > 0) ? Da : 33;        
         quantidadedeGuerreiros++;
 }
-Guerreiro::Guerreiro(const Guerreiro &outro, const Data &dataOutro)
-:datadeNascimento(dataOutro)
+Guerreiro::Guerreiro(const Guerreiro &outro, const Data &dataOutro, const Espada &espadaOutro)
+:datadeNascimento(dataOutro), espadadoGuerreiro(espadaOutro)
 {
     this->nomedoGuerreiro = outro.nomedoGuerreiro;
     this->strenght = outro.strenght;
@@ -127,7 +126,9 @@ void Guerreiro::treinarGuerreiro (){
 	cout<<"\n\nTodos os dias o Guerreiro "<<this->nomedoGuerreiro<<" treina cada um de seus atributos...";
 	cout<<"\nO treino foi concluido e o Guerreiro ganhou +2 em cada atributo e gastou 30 de mana.\nDescanse agora!\n";
 	
-	this->strenght += incrementoStrenght;
+    Sleep(3000); // tempo do treino.
+	
+    this->strenght += incrementoStrenght;
 	this->agility += incrementoAgility;
 	this->intelligence +=incrementoIntelligence;
 	this->armor += incrementoArmor;
@@ -136,10 +137,17 @@ void Guerreiro::treinarGuerreiro (){
 }
 void Guerreiro::regenerarGuerreiro (){
 	cout<<"\n\nO Guerreiro "<<this->nomedoGuerreiro<<" descansa para gerenerar nama gasta no dia, ganha +25 de mana...";
+    Sleep(3000); // tempo do treino.
 	this->mana += incrementoMana;
+}
+void Guerreiro::alimentarGuerreiro(){
+	cout<<"\n\nAo alimentar-se o Guerreiro ganha +13 de mana e +24 de vida";
+	this->mana += incrementoMana;
+	this->life + incrementoLife;
 }
 
 void Guerreiro::ataqueFisicodoGuerreiro (int &armordoInimigo ){
+    
     cout<<"\n\nO Guerreiro esta atacando fisicamente...\n";
 	if ( (this->damage + this->strenght/4) > armordoInimigo)
         armordoInimigo -= this->damage/3;  
@@ -164,18 +172,15 @@ void Guerreiro::ataqueMagicodoGuerreiro (int &armordoInimigo){
     if (armordoInimigo < 0) armordoInimigo = 0;
 }
 bool Guerreiro::defesadoGuerreiro( int ataquedoInimigo){
-    if (this->armor < ataquedoInimigo)
+    
+    if (this->armor < ataquedoInimigo )
         {
             this->life -= (ataquedoInimigo/this->armor);
+            cout<<"\nLife do Guerreiro "<<this->life<<std::endl;
             return false;
         }
     else
         return true;
-}
-void Guerreiro::alimentarGuerreiro(){
-	cout<<"\n\nAo alimentar-se o Guerreiro ganha +13 de mana e +24 de vida";
-	this->mana += incrementoMana;
-	this->life + incrementoLife;
 }
 void Guerreiro::exibirAtributos() const{
     cout<<"\n\nNome: "<<this->nomedoGuerreiro;
@@ -187,13 +192,14 @@ void Guerreiro::exibirAtributos() const{
     cout<<"\nArmor: "<<this->armor;
     cout<<"\nDamage: "<<this->damage<<std::endl;
     
-    datadeNascimento.exibir();
+    datadeNascimento.exibirData();
+    espadadoGuerreiro.exibirEspada();
 }
 void Guerreiro::ordenarArmaduraVestida()
 {
     if (armaduraVestida == false)
     {
-        cout<<"\nSeus guerreiros estao sem suas armaduras.\n Foi ordenado o vestimento da armadura ... \n";
+        cout<<"\nSeus guerreiros estao sem suas armaduras.\nFoi ordenado o vestimento da armadura ... \n";
         Sleep(3000);
         armaduraVestida = true;
     }
