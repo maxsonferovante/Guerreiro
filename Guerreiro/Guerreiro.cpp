@@ -275,3 +275,24 @@ void Guerreiro::adicionarRecompensas(float recompensa)
         this->recompensas[0] = recompensa;
     }
 }
+
+ostream &operator<<(ostream &output, const Guerreiro &guerreiro )
+{
+    output <<"\nNome do Guerreiro: " <<guerreiro.nomedoGuerreiro <<".\n" <<"Quantidade de vida: "<<guerreiro.life <<".\n" <<"Quantidade de mana: "<<guerreiro.mana <<".\n";
+    return output;
+}
+
+const Guerreiro& Guerreiro::operator=(const Guerreiro &guerreiro)
+{
+        quantidadeRecompensas = guerreiro.quantidadeRecompensas;
+        delete []recompensas;
+        recompensas = new float[quantidadeRecompensas];
+        for (int i=0; i<quantidadeRecompensas;i++)
+            recompensas[i] = guerreiro.recompensas[i];
+}
+bool Guerreiro::operator==(const Guerreiro &guerreiro) const
+{
+        if (nomedoGuerreiro != guerreiro.nomedoGuerreiro)
+            return false;
+        return true;
+}

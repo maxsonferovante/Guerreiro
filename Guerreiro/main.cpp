@@ -14,7 +14,7 @@ int main(){
     int armor = 40;
     
     migo.adicionarRecompensas(887.9);
-    migo.exibirAtributos();
+    cout<<migo;
     
     max.adicionarRecompensas(456.4);
     max.exibirAtributos();

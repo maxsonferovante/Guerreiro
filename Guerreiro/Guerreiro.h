@@ -2,13 +2,16 @@
 #define GUERREIRO_H
 
 #include <string>
+#include <iostream>
 #include "Data.h"
 #include "Espada.h"
 
 using std::string;
+using std::ostream;
 
 class Guerreiro
 {
+    friend ostream & operator<<(ostream &, const Guerreiro &);
 public:
     Guerreiro(Espada *);
     Guerreiro(const string&, int, int, int, int, int, int , Espada *);
@@ -48,7 +51,9 @@ public:
     int getManadoGuerreiro() const;
     int getArmorGuerreiro() const;
     int getDamageGuerreiro() const;
-
+    
+    const Guerreiro &operator=(const Guerreiro &);
+    bool operator==(const Guerreiro &) const;
 private:
     string nomedoGuerreiro;
     int strenght;
