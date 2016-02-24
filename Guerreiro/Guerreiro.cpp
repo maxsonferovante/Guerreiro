@@ -9,15 +9,15 @@ using std::string;
 using std::cout;
 
 int Guerreiro::quantidadedeGuerreiros = 0;
-const int Guerreiro::incrementoStrenght = 2;
-const int Guerreiro::incrementoAgility = 2;
-const int Guerreiro::incrementoIntelligence = 2;
-const int Guerreiro::incrementoLife = 13;
-const int Guerreiro::incrementoMana = 24;
-const int Guerreiro::incrementoArmor  = 2;
-const int Guerreiro::incrementoDamage = 2;
-const int Guerreiro::decrementoLife = 13;
-const int Guerreiro::decrementoMana = 24;
+const int Guerreiro::IncrementoStrenght = 2;
+const int Guerreiro::IncrementoAgility = 2;
+const int Guerreiro::IncrementoIntelligence = 2;
+const int Guerreiro::IncrementoLife = 13;
+const int Guerreiro::IncrementoMana = 24;
+const int Guerreiro::IncrementoArmor  = 2;
+const int Guerreiro::IncrementoDamage = 2;
+const int Guerreiro::DecrementoLife = 13;
+const int Guerreiro::DecrementoMana = 24;
 
 bool Guerreiro::armaduraVestida = false;
 
@@ -143,22 +143,22 @@ void Guerreiro::treinarGuerreiro (){
 	
     Sleep(3000); // tempo do treino.
 	
-    this->strenght += incrementoStrenght;
-	this->agility += incrementoAgility;
-	this->intelligence +=incrementoIntelligence;
-	this->armor += incrementoArmor;
-	this->damage += incrementoDamage;
-	this->mana -= incrementoMana;
+    this->strenght += IncrementoStrenght;
+	this->agility += IncrementoAgility;
+	this->intelligence +=IncrementoIntelligence;
+	this->armor += IncrementoArmor;
+	this->damage += IncrementoDamage;
+	this->mana -= IncrementoMana;
 }
 void Guerreiro::regenerarGuerreiro (){
 	cout<<"\nO Guerreiro "<<this->nomedoGuerreiro<<" descansa para gerenerar nama gasta no dia, ganha +25 de mana...";
     Sleep(3000); // tempo do treino.
-	this->mana += incrementoMana;
+	this->mana += IncrementoMana;
 }
 void Guerreiro::alimentarGuerreiro(){
 	cout<<"\nAo alimentar-se o Guerreiro "<<this->nomedoGuerreiro<<" ganha +13 de mana e +24 de vida";
-	this->mana += incrementoMana;
-	this->life + incrementoLife;
+	this->mana += IncrementoMana;
+	this->life + IncrementoLife;
 }
 
 void Guerreiro::ataqueFisicodoGuerreiro (int &armordoInimigo ){

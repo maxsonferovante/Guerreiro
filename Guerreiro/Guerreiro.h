@@ -65,15 +65,15 @@ private:
     int quantidadeRecompensas;
     static bool armaduraVestida;
     
-    const static int incrementoStrenght;
-    const static int incrementoAgility;
-    const static int incrementoIntelligence;
-    const static int incrementoLife;
-    const static int incrementoMana;
-    const static int incrementoArmor;
-    const static int incrementoDamage;
-    const static int decrementoLife;
-    const static int decrementoMana;
+    const static int IncrementoStrenght;
+    const static int IncrementoAgility;
+    const static int IncrementoIntelligence;
+    const static int IncrementoLife;
+    const static int IncrementoMana;
+    const static int IncrementoArmor;
+    const static int IncrementoDamage;
+    const static int DecrementoLife;
+    const static int DecrementoMana;
 
     static int quantidadedeGuerreiros;
 };
