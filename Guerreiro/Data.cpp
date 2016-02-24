@@ -29,5 +29,5 @@ int Data::checkday(int dia) const
 }
 void Data::exibirData() const
 {
-    std::cout<<"Nascimento: "<<this->day<<"/"<<this->month<<"/"<<this->year<<std::endl;
+    std::cout<<"\nNascimento: "<<this->day<<"/"<<this->month<<"/"<<this->year<<std::endl;
 }

@@ -47,3 +47,7 @@ void Espada::exibirEspada() const
 {
     cout<<"\nTipo da Espada: "<<this->tipodaEspada<<"\nComprimento (metros): "<<this->comprimentodaEspada<<"\nEmpunhada: "<<this->empunhada<<std::endl;
 }
+bool Espada::getEmpunha()
+{
+    return this->empunhada;
+}

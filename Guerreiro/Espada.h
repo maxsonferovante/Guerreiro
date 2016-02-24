@@ -15,6 +15,7 @@ public:
     void empunharEspada();
     void desempunharEspada();
     void exibirEspada() const; 
+    bool getEmpunha();
 private:
     string tipodaEspada;
     float comprimentodaEspada;

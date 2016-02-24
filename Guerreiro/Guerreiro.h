@@ -4,27 +4,32 @@
 #include <string>
 #include "Data.h"
 #include "Espada.h"
+
 using std::string;
 
 class Guerreiro
 {
 public:
-    Guerreiro();
-    Guerreiro(const string&, int, int, int, int, int, int ,string, float, bool);
-    Guerreiro(const Guerreiro &, const Data &, const Espada &);
+    Guerreiro(Espada *);
+    Guerreiro(const string&, int, int, int, int, int, int , Espada *);
+    Guerreiro(const Guerreiro &);
 
     ~Guerreiro();
 
     void treinarGuerreiro();
     void regenerarGuerreiro();
+    void alimentarGuerreiro();
+    void exibirAtributos() const;
+
     void ataqueFisicodoGuerreiro(int&);
     void ataqueMagicodoGuerreiro(int&);
     bool defesadoGuerreiro(int);
-    void alimentarGuerreiro();
-    void exibirAtributos() const;
+    void ataqueEspadaGuerreiro(int &);
     
     static void ordenarArmaduraVestida();
     static void desordenarArmaduraVestida();
+    
+    void adicionarRecompensas(float );
 
     void setNomedoGuerreiro(string);
     void setStrenghtdoGuerreiro(int);
@@ -54,8 +59,10 @@ private:
     int armor;
     int damage;
     const Data datadeNascimento;
-    const Espada espadadoGuerreiro;
+    Espada *espadadoGuerreiro;
     
+    float *recompensas;
+    int quantidadeRecompensas;
     static bool armaduraVestida;
     
     const static int incrementoStrenght;
