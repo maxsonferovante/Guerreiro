@@ -199,7 +199,7 @@ bool Guerreiro::defesadoGuerreiro( int ataquedoInimigo){
 }
 void Guerreiro::ataqueEspadaGuerreiro(int &resistenciadoInimigo)
 {
-    if (espadadoGuerreiro->getEmpunha())
+    if (espadadoGuerreiro->getEmpunhada())
     {
         if ((this->strenght + this->agility) / 5 > resistenciadoInimigo)
         {
@@ -284,11 +284,29 @@ ostream &operator<<(ostream &output, const Guerreiro &guerreiro )
 
 const Guerreiro& Guerreiro::operator=(const Guerreiro &guerreiro)
 {
-        quantidadeRecompensas = guerreiro.quantidadeRecompensas;
-        delete []recompensas;
-        recompensas = new float[quantidadeRecompensas];
-        for (int i=0; i<quantidadeRecompensas;i++)
-            recompensas[i] = guerreiro.recompensas[i];
+    this->nomedoGuerreiro = guerreiro.nomedoGuerreiro;
+    this->strenght = guerreiro.strenght;
+    this->agility = guerreiro.agility;
+    this->intelligence = guerreiro.intelligence;
+    this->life = guerreiro.life;
+    this->mana = guerreiro.mana;
+    this->armor = guerreiro.armor;
+    this->damage = guerreiro.damage;
+    
+    datadeNascimento.setday(guerreiro.datadeNascimento.getday());
+    datadeNascimento.setmonth(guerreiro.datadeNascimento.getmonth());
+    datadeNascimento.setyear(guerreiro.datadeNascimento.getyear());
+    
+    espadadoGuerreiro->setTipodaEspada (guerreiro.espadadoGuerreiro->getTipodaEspada());
+    espadadoGuerreiro->setComprimentodaEspada (guerreiro.espadadoGuerreiro->getComprimentodaEspada());
+    espadadoGuerreiro->setEmpunhada(guerreiro.espadadoGuerreiro->getEmpunhada());
+    
+    quantidadeRecompensas = guerreiro.quantidadeRecompensas;
+    
+    delete []recompensas;
+    recompensas = new float[quantidadeRecompensas];
+    for(int i=0; i<quantidadeRecompensas;i++)
+        recompensas[i] = guerreiro.recompensas[i];
 }
 bool Guerreiro::operator==(const Guerreiro &guerreiro) const
 {

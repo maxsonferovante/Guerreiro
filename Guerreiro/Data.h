@@ -9,6 +9,12 @@ public:
     ~Data();
     
     void exibirData () const;
+    int getday() const;
+    int getmonth() const;
+    int getyear() const;
+    void setday(int);
+    void setmonth(int);
+    void setyear(int);
 private:
         int month;
         int day;

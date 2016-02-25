@@ -23,6 +23,16 @@ Espada::~Espada()
 {
 }
 
+
+
+//this->life = (Li > 0) ? Li : 1200;
+string Espada::getTipodaEspada() const {return this->tipodaEspada;}
+float Espada::getComprimentodaEspada() const {return this->comprimentodaEspada;}
+bool Espada::getEmpunhada() const {return this->empunhada;}
+
+void Espada::setTipodaEspada(string tipo) {this->tipodaEspada = tipo;};
+void Espada::setComprimentodaEspada(float compri) {this->comprimentodaEspada = (compri >0) ?compri : 1.25;};
+void Espada::setEmpunhada(bool emp) {this->empunhada = emp;};
 void Espada::empunharEspada()
 {
     if (!this->empunhada)
@@ -46,8 +56,4 @@ void Espada::desempunharEspada()
 void Espada::exibirEspada() const
 {
     cout<<"\nTipo da Espada: "<<this->tipodaEspada<<"\nComprimento (metros): "<<this->comprimentodaEspada<<"\nEmpunhada: "<<this->empunhada<<std::endl;
-}
-bool Espada::getEmpunha()
-{
-    return this->empunhada;
 }

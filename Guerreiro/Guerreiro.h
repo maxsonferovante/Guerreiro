@@ -63,7 +63,7 @@ private:
     int mana;
     int armor;
     int damage;
-    const Data datadeNascimento;
+    Data datadeNascimento;
     Espada *espadadoGuerreiro;
     
     float *recompensas;

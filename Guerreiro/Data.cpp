@@ -17,6 +17,14 @@ Data::Data(const Data &outra)
 Data::~Data()
 {
 }
+
+int Data::getday() const{return this->day;}
+int Data::getmonth() const{return this->month;}
+int Data::getyear() const{return this->year;}
+void Data::setday(int d) { this->day = checkday(d); }
+void Data::setmonth(int m) { this->month =(m>0 && m<13) ? m : 1; };
+void Data::setyear(int y) { this->year =(y>1899) ? y : 1900; };
+
 int Data::checkday(int dia) const
 {
     static const int diasPorMes [ 13 ] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
