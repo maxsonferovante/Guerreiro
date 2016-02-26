@@ -310,7 +310,9 @@ const Guerreiro& Guerreiro::operator=(const Guerreiro &guerreiro)
 }
 bool Guerreiro::operator==(const Guerreiro &guerreiro) const
 {
-        if (nomedoGuerreiro != guerreiro.nomedoGuerreiro)
-            return false;
-        return true;
+        if (this->nomedoGuerreiro == guerreiro.nomedoGuerreiro && this->strenght == guerreiro.strenght && 
+        this->agility == guerreiro.agility && this->intelligence == guerreiro.intelligence &&
+        this->life == guerreiro.life && this->mana == guerreiro.mana && this->armor == guerreiro.armor && this->damage == guerreiro.damage)
+            return true;
+        return false;
 }

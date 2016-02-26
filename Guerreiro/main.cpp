@@ -10,8 +10,6 @@ int main(){
     
 	Guerreiro migo("MigoTiti", 1000, 300, 25, 21, 4, 1997,espada1);
     Guerreiro max("Max", 1220, 600, 45, 14, 10, 1994,espada2);
-
-    int armor = 40;
     
     migo.adicionarRecompensas(887.9);
     cout<<migo;
@@ -19,11 +17,16 @@ int main(){
     max.adicionarRecompensas(456.4);
     max.exibirAtributos();
     
-    migo.ataqueEspadaGuerreiro(armor);
-    cout<<"\n\nResistencia do Inimigo apos o ataque com a espada do Guerreiro "<<migo.getNomedoGuerreiro()<<": "<<armor<<std::endl;
+    if (max==migo)
+        cout<<"\nGuerreiros iguas.\n";
+    else
+        cout<<"\nGuerreiros diferentes.\n";
     
-    max.ataqueFisicodoGuerreiro(armor);
-    cout<<"\n\nResistencia do Inimigo apos o ataque magico do Guerreiro "<<max.getNomedoGuerreiro()<<": "<<armor<<std::endl;
-        
+    max = migo;
+    
+    if (max==migo)
+        cout<<"\nGuerreiros iguas.\n";
+    else
+        cout<<"\nGuerreiros diferentes.\n";    
 	return 0;
 }
