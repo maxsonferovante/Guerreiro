@@ -12,48 +12,41 @@ int Guerreiro::quantidadedeGuerreiros = 0;
 const int Guerreiro::IncrementoStrenght = 2;
 const int Guerreiro::IncrementoAgility = 2;
 const int Guerreiro::IncrementoIntelligence = 2;
-const int Guerreiro::IncrementoLife = 13;
+
 const int Guerreiro::IncrementoMana = 24;
 const int Guerreiro::IncrementoArmor  = 2;
 const int Guerreiro::IncrementoDamage = 2;
-const int Guerreiro::DecrementoLife = 13;
+
 const int Guerreiro::DecrementoMana = 24;
 
 bool Guerreiro::armaduraVestida = false;
 
 Guerreiro::Guerreiro(Espada *espada)
-:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33),intelligence(33), life(1200), mana(600),armor(3), damage(33), datadeNascimento()
+:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33), mana(600),armor(3), damage(33),Personagem("Sem Nome",1200)
 {
     this->espadadoGuerreiro = espada; 
-    this->quantidadeRecompensas = 0;
     quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da, int dia, int mes, int ano, Espada *espada)
-:strenght(33), agility(33),intelligence(33),armor(3), datadeNascimento(dia, mes, ano)
+:strenght(33), agility(33),intelligence(33),armor(3),Personagem(N,Li,dia,mes,ano)
 {
         this->espadadoGuerreiro = espada;
-        
-        this->nomedoGuerreiro = N;
-        this->life = (Li > 0) ? Li : 1200;
         this->mana = (Ma > 0) ? Ma : 600;
         this->damage = (Da > 0) ? Da : 33;        
         
-        this->quantidadeRecompensas = 0;
         quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro(const Guerreiro &outro)
-:datadeNascimento(outro.datadeNascimento)
+
 {
     this->nomedoGuerreiro = outro.nomedoGuerreiro;
     this->strenght = outro.strenght;
     this->agility = outro.agility;
     this->intelligence = outro.intelligence;
-    this->life = outro.life;
     this->mana = outro.armor;
     this->armor = outro.armor;
     this->damage = outro.damage;
-    this->quantidadeRecompensas = outro.quantidadeRecompensas;
-    this->recompensas = outro.recompensas;
+
     
     this->espadadoGuerreiro = outro.espadadoGuerreiro;
     
@@ -61,7 +54,6 @@ Guerreiro::Guerreiro(const Guerreiro &outro)
 }
 
 Guerreiro::~Guerreiro(){
-    delete [] recompensas;
     quantidadedeGuerreiros--;
     
 }
@@ -249,30 +241,6 @@ void Guerreiro::desordenarArmaduraVestida()
             Sleep(3000);
             cout<<"\nArmaduras guardadas...\n";
             armaduraVestida = false;
-    }
-}
-void Guerreiro::adicionarRecompensas(float recompensa)
-{
-    if(this->quantidadeRecompensas !=0)
-    {
-        float *aux = new float[this->quantidadeRecompensas];
-    
-        for (int i=0 ; i <this->quantidadeRecompensas-1; i++)
-            aux[i] = this->recompensas[i];
-                
-        delete [] recompensas;
-                
-        recompensas = new float[++this->quantidadeRecompensas];
-        for (int i=0; i<this->quantidadeRecompensas;i++)
-            this->recompensas[i] = aux[i] ;
-                
-        this->recompensas[this->quantidadeRecompensas-1] = recompensa;
-        delete [] aux;            
-    }
-    else
-    {
-        this->recompensas = new float[++this->quantidadeRecompensas];
-        this->recompensas[0] = recompensa;
     }
 }
 
