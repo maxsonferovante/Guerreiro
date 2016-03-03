@@ -3,19 +3,21 @@
 
 #include <string>
 #include <iostream>
-#include "Data.h"
+#include <windows.h>
 #include "Espada.h"
 #include "Personagem.h"
 
 using std::string;
 using std::ostream;
+using std::cout;
 
 class Guerreiro: public Personagem
 {
     friend ostream & operator<<(ostream &, const Guerreiro &);
 public:
     Guerreiro(Espada *);
-    Guerreiro(const string&, int, int, int, int, int, int , Espada *);
+    Guerreiro(const string &, int, int, int , Espada *);
+
     Guerreiro(const Guerreiro &);
 
     ~Guerreiro();
@@ -41,14 +43,12 @@ public:
 
     void setManadoGuerreiro(int);
     void setArmorGuerreiro(int);
-    void setDamageGuerreiro(int);
 
     int getStrenghtdoGuerreiro() const;
     int getAgilitydoGuerreiro() const;
     int getIntelligencedoGuerreiro() const;
     int getManadoGuerreiro() const;
     int getArmorGuerreiro() const;
-    int getDamageGuerreiro() const;
     
     const Guerreiro &operator=(const Guerreiro &);
     bool operator==(const Guerreiro &) const;
@@ -58,7 +58,6 @@ private:
     int intelligence;
     int mana;
     int armor;
-    int damage;
     Espada *espadadoGuerreiro;
     
     static bool armaduraVestida;

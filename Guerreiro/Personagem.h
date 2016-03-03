@@ -3,26 +3,32 @@
 
 
 #include<string>
+#include<iostream>
+#include "Data.h"
 
 using std::string;
+using std::ostream;
+using std::cout;
 
 class Personagem
 {
+    friend ostream & operator<<(ostream &, const Personagem &);
 public:
-    Personagem(String, int,int,int,int);
-    Personagem(Const Personagem &);
+    Personagem(string, int , int , int);
+    Personagem(const Personagem &);
     ~Personagem();
     
     void adicionarRecompensas(float);
-private:
-    String nomedoPersonagem;
+protected:
+    string nomedoPersonagem;
     int life;
-    int *recompensas;
+    float *recompensas;
     int quantidadeRecompensas;
-    const Data datadeNascimento;
+    Data datadeNascimento;
     const static int IncrementoLife;
     const static int DecrementoLife;
-
+    
+    const Personagem &operator=(const Personagem &);
 };
 
 #endif // PERSONAGEM_H

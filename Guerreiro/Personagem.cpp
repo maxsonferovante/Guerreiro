@@ -1,26 +1,35 @@
+
+
 #include "Personagem.h"
+
 
 const int Personagem::DecrementoLife = 13;
 const int Personagem::IncrementoLife = 13;
 
-Personagem::Personagem(String nome, int l,int dia, int mes, int ano)
-:datadeNascimento(dia,mes,ano)
+Personagem::Personagem(string nome,int dia, int mes, int ano)
+:life(1200),datadeNascimento(dia,mes,ano)
 {
     this->nomedoPersonagem = nome;
-    this->life = (l>0: j ? 1000);
     this->quantidadeRecompensas = 0;
+    this->recompensas = 0;
 }
 Personagem::Personagem(const Personagem & outro)
 :datadeNascimento(outro.datadeNascimento)
 {
     this->nomedoPersonagem = outro.nomedoPersonagem;
     this->life = outro.life;
-    this->quantidadeRecompensas = 0;
+    this->quantidadeRecompensas = outro.quantidadeRecompensas;
+    
+    delete [] recompensas;
+    this->recompensas = new float[this->quantidadeRecompensas];
+    
+    for (int i=0; i<this->quantidadeRecompensas-1;i++)
+        this->recompensas[i] = outro.recompensas[i];
 }
 
 Personagem::~Personagem()
 {
-    delete []recompenas;
+    delete [] recompensas;
 }
 
 void Personagem::adicionarRecompensas(float recompensa)
@@ -46,4 +55,30 @@ void Personagem::adicionarRecompensas(float recompensa)
         this->recompensas = new float[++this->quantidadeRecompensas];
         this->recompensas[0] = recompensa;
     }
+}
+
+ostream &operator<<(ostream &output, const Personagem &personagem)
+{
+    output <<"\nNome do Personagem: "<<personagem.nomedoPersonagem;
+    output <<"\nQuantidade de Vida: "<<personagem.life;
+    output <<"\nQuantidade de Recompensas: "<<personagem.quantidadeRecompensas;
+    output <<"Valores das Recompensas: ";
+    for (int i=0; i<personagem.quantidadeRecompensas-1;i++)
+        output <<"\n "<<i+1<<" - "<<personagem.recompensas[i];
+    return output;
+}
+const Personagem& Personagem::operator=(const Personagem &personagem)
+{
+    this->nomedoPersonagem = personagem.nomedoPersonagem;
+    this->life = personagem.life;
+    this->quantidadeRecompensas = personagem.quantidadeRecompensas;
+    
+    delete [] recompensas;
+    this->recompensas = new float[this->quantidadeRecompensas];
+    for (int i=0; i<this->quantidadeRecompensas-1;i++)
+        this->recompensas[i] = personagem.recompensas[i];
+    
+    datadeNascimento.setday(personagem.datadeNascimento.getday());
+    datadeNascimento.setmonth(personagem.datadeNascimento.getmonth());
+    datadeNascimento.setyear(personagem.datadeNascimento.getyear());
 }

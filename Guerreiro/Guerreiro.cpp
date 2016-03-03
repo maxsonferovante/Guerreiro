@@ -1,55 +1,43 @@
-#include<iostream>
-#include<windows.h>
-
 #include "Guerreiro.h"
-#include "Espada.h"
-#include <string>
-
-using std::string;
-using std::cout;
 
 int Guerreiro::quantidadedeGuerreiros = 0;
 const int Guerreiro::IncrementoStrenght = 2;
 const int Guerreiro::IncrementoAgility = 2;
-const int Guerreiro::IncrementoIntelligence = 2;
 
-const int Guerreiro::IncrementoMana = 24;
 const int Guerreiro::IncrementoArmor  = 2;
 const int Guerreiro::IncrementoDamage = 2;
-
-const int Guerreiro::DecrementoMana = 24;
 
 bool Guerreiro::armaduraVestida = false;
 
 Guerreiro::Guerreiro(Espada *espada)
-:nomedoGuerreiro("Desconhecido"),strenght(33), agility(33), mana(600),armor(3), damage(33),Personagem("Sem Nome",1200)
+:strenght(33), agility(33), armor(3),Personagem("Sem Nome",21,12,2012)
 {
     this->espadadoGuerreiro = espada; 
     quantidadedeGuerreiros++;
 }
-Guerreiro::Guerreiro( const string &N, int Li, int Ma, int Da, int dia, int mes, int ano, Espada *espada)
-:strenght(33), agility(33),intelligence(33),armor(3),Personagem(N,Li,dia,mes,ano)
+Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espada)
+:strenght(33), agility(33), armor(3),Personagem(nome,dia,mes,ano)
 {
         this->espadadoGuerreiro = espada;
-        this->mana = (Ma > 0) ? Ma : 600;
-        this->damage = (Da > 0) ? Da : 33;        
-        
         quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro(const Guerreiro &outro)
-
+:Personagem(outro.nomedoPersonagem, outro.datadeNascimento.getday(), outro.datadeNascimento.getmonth(), outro.datadeNascimento.getyear())
 {
-    this->nomedoGuerreiro = outro.nomedoGuerreiro;
     this->strenght = outro.strenght;
     this->agility = outro.agility;
-    this->intelligence = outro.intelligence;
-    this->mana = outro.armor;
     this->armor = outro.armor;
-    this->damage = outro.damage;
-
-    
+ 
     this->espadadoGuerreiro = outro.espadadoGuerreiro;
     
+    /*Inicio da duvida: Será se é recomendado a implementação dessa forma ??????*/
+    
+    this->quantidadeRecompensas = outro.quantidadeRecompensas;
+    this->recompensas = new float[this->quantidadeRecompensas];
+    for (int i=0;i<this->quantidadeRecompensas-1;i++)
+            this->recompensas[i] = outro.recompensas[i];
+    
+    /*Fim da duvida.*/
     quantidadedeGuerreiros++;
 }
 
@@ -57,10 +45,6 @@ Guerreiro::~Guerreiro(){
     quantidadedeGuerreiros--;
     
 }
-void Guerreiro::setNomedoGuerreiro ( string nome){
-		this->nomedoGuerreiro = nome;
-}
-
 void Guerreiro::setStrenghtdoGuerreiro ( int S){
 	if (S> 0)
         this->strenght = S;
@@ -73,39 +57,11 @@ void Guerreiro::setAgilitydoGuerreiro ( int A){
 	else
         this->agility = 33;
 }
-void Guerreiro::setIntelligencedoGuerreiro ( int I){
-	if(I>0)
-		this->intelligence = I;
-	else
-        this->intelligence = 33;
-}
-void Guerreiro::setLifedoGuerreiro ( int L){
-	if(L>0)
-		this->life = L;
-	else
-        this->life = 1200;
-}
-void Guerreiro::setManadoGuerreiro ( int M){
-	if(M>0)
-		this->mana = M;
-	else
-       this-> mana = 800;
-}
 void Guerreiro::setArmorGuerreiro( int ar){
 	if(ar>0)
 		this->armor = ar;
 	else
         this->armor = 3;
-}
-void Guerreiro::setDamageGuerreiro( int da){
-	if(da>0)
-		this->damage = da;
-	else
-        this->damage = 33;
-}
-
-string Guerreiro::getNomedoGuerreiro () const{
-	return this->nomedoGuerreiro;	
 }
 int Guerreiro::getStrenghtdoGuerreiro () const{
 	return this->strenght;
@@ -113,68 +69,36 @@ int Guerreiro::getStrenghtdoGuerreiro () const{
 int Guerreiro::getAgilitydoGuerreiro () const{
 	return this->agility;
 }
-int Guerreiro::getIntelligencedoGuerreiro () const{
-	return this->intelligence;
-}
-int Guerreiro::getLifedoGuerreiro () const{
-	return this->life;
-}
-int Guerreiro::getManadoGuerreiro () const{
-	return this->mana;
-}
 int Guerreiro::getArmorGuerreiro() const{
 	return this->armor;
 }
-int Guerreiro::getDamageGuerreiro() const{
-	return this->damage;
-}
 
 void Guerreiro::treinarGuerreiro (){
-	cout<<"\nTodos os dias o Guerreiro "<<this->nomedoGuerreiro<<" treina cada um de seus atributos...";
-	cout<<"\nO treino foi concluido e o Guerreiro "<<this->nomedoGuerreiro<<" ganhou +2 em cada atributo e gastou 30 de mana.\nDescanse agora!\n";
+	cout<<"\nTodos os dias o Guerreiro "<<this->nomedoPersonagem<<" treina cada um de seus atributos...";
+	cout<<"\nO treino foi concluido e o Guerreiro "<<this->nomedoPersonagem<<" ganhou +2 em cada atributo e gastou 30 de mana.\nDescanse agora!\n";
 	
     Sleep(3000); // tempo do treino.
 	
     this->strenght += IncrementoStrenght;
 	this->agility += IncrementoAgility;
-	this->intelligence +=IncrementoIntelligence;
 	this->armor += IncrementoArmor;
-	this->damage += IncrementoDamage;
-	this->mana -= IncrementoMana;
+
 }
 void Guerreiro::regenerarGuerreiro (){
-	cout<<"\nO Guerreiro "<<this->nomedoGuerreiro<<" descansa para gerenerar nama gasta no dia, ganha +25 de mana...";
+	cout<<"\nO Guerreiro "<<this->nomedoPersonagem<<" descansa para gerenerar nama gasta no dia, ganha +25 de mana...";
     Sleep(3000); // tempo do treino.
-	this->mana += IncrementoMana;
+    this->life += this->IncrementoLife;
 }
-void Guerreiro::alimentarGuerreiro(){
-	cout<<"\nAo alimentar-se o Guerreiro "<<this->nomedoGuerreiro<<" ganha +13 de mana e +24 de vida";
-	this->mana += IncrementoMana;
-	this->life + IncrementoLife;
-}
-
 void Guerreiro::ataqueFisicodoGuerreiro (int &armordoInimigo ){
     
-    cout<<"\nO Guerreiro "<<this->nomedoGuerreiro<<" esta atacando fisicamente...\n";
-	if ( (this->damage + this->strenght/4) > armordoInimigo)
-        armordoInimigo -= this->damage/3;  
+    cout<<"\nO Guerreiro "<<this->nomedoPersonagem<<" esta atacando fisicamente...\n";
+	if ( (this->agility + this->strenght/4) > armordoInimigo)
+        armordoInimigo -= (this->agility + this->strenght)/3;  
     else
-        if( (this->damage + this->strenght/4) == armordoInimigo)
-            armordoInimigo -= this->damage/5;
+        if( (this->agility + this->strenght/4) == armordoInimigo)
+            armordoInimigo -= (this->agility + this->strenght)/5;
         else
             cout<<"\nO Inimigo defendou o ataque fisico...\n";
-    
-    if (armordoInimigo < 0) armordoInimigo = 0;
-}
-void Guerreiro::ataqueMagicodoGuerreiro (int &armordoInimigo){
-    cout<<"\nO Guerreiro "<<this->nomedoGuerreiro<<"  esta atacando magicamente...\n";
-    if ( (this->damage + this->intelligence/3) > armordoInimigo)
-        armordoInimigo -= this->damage/2;
-    else
-        if( (this->damage + this->intelligence/3) == armordoInimigo)
-            armordoInimigo -= this->damage/4;
-        else
-            cout<<"\nO Inimigo defendeu o ataque magico...\n";
     
     if (armordoInimigo < 0) armordoInimigo = 0;
 }
@@ -195,26 +119,24 @@ void Guerreiro::ataqueEspadaGuerreiro(int &resistenciadoInimigo)
     {
         if ((this->strenght + this->agility) / 5 > resistenciadoInimigo)
         {
-            cout<<"\nO Guerreiro "<<this->nomedoGuerreiro<<" esta atacando com sua espada...\n";
+            cout<<"\nO Guerreiro "<<this->nomedoPersonagem<<" esta atacando com sua espada...\n";
             resistenciadoInimigo -= resistenciadoInimigo - ((this->strenght + this->agility) / 5);
             Sleep(3000);
             cout<<"\nAtaque realizado...\n";
         }
         else
-            cout<<"\nO Guerreiro "<<this->nomedoGuerreiro<<" teve seu ataque com a espada defendido... \n";
+            cout<<"\nO Guerreiro "<<this->nomedoPersonagem<<" teve seu ataque com a espada defendido... \n";
     }
     else
-        cout<<"\nEspada do Guerreiro "<<this->nomedoGuerreiro<<" desempunhada...\n";
+        cout<<"\nEspada do Guerreiro "<<this->nomedoPersonagem<<" desempunhada...\n";
 }
 void Guerreiro::exibirAtributos() const{
-    cout<<"\n\nNome: "<<this->nomedoGuerreiro;
+    cout<<"\n\nNome: "<<this->nomedoPersonagem;
     cout<<"\nStrenght: "<<this->strenght;
     cout<<"\nAgility: "<<this->agility;
-    cout<<"\nIntelligence: "<<this->intelligence;
     cout<<"\nLife: "<<this->life;
-    cout<<"\nMana: "<<this->mana;
-    cout<<"\nArmor: "<<this->armor;
-    cout<<"\nDamage: "<<this->damage<<std::endl;
+
+    cout<<"\nArmor: "<<this->armor<<std::endl;
     
     cout<<"Recompensas: ";
     for(int i=0; i < quantidadeRecompensas;i++)
@@ -246,41 +168,38 @@ void Guerreiro::desordenarArmaduraVestida()
 
 ostream &operator<<(ostream &output, const Guerreiro &guerreiro )
 {
-    output <<"\nNome do Guerreiro: " <<guerreiro.nomedoGuerreiro <<".\n" <<"Quantidade de vida: "<<guerreiro.life <<".\n" <<"Quantidade de mana: "<<guerreiro.mana <<".\n";
+    output << static_cast < Personagem > (guerreiro);
+    output <<"\nNome do Guerreiro: " <<guerreiro.nomedoPersonagem;
+    output <<"\n" <<"Quantidade de vida: "<<guerreiro.life; 
+    output <<"\n" <<"Quantidade de mana: "<<guerreiro.mana;
     return output;
 }
 
 const Guerreiro& Guerreiro::operator=(const Guerreiro &guerreiro)
 {
-    this->nomedoGuerreiro = guerreiro.nomedoGuerreiro;
+
     this->strenght = guerreiro.strenght;
     this->agility = guerreiro.agility;
-    this->intelligence = guerreiro.intelligence;
-    this->life = guerreiro.life;
-    this->mana = guerreiro.mana;
     this->armor = guerreiro.armor;
-    this->damage = guerreiro.damage;
+    
+    this->nomedoPersonagem = guerreiro.nomedoPersonagem;
+    this->life = guerreiro.life;
+    this->quantidadeRecompensas = guerreiro.quantidadeRecompensas;
+    
+    delete [] recompensas;
+    this->recompensas = new float[this->quantidadeRecompensas];
+     for (int i=0; i<this->quantidadeRecompensas-1;i++)
+        this->recompensas[i] = guerreiro.recompensas[i];
     
     datadeNascimento.setday(guerreiro.datadeNascimento.getday());
     datadeNascimento.setmonth(guerreiro.datadeNascimento.getmonth());
     datadeNascimento.setyear(guerreiro.datadeNascimento.getyear());
     
-    espadadoGuerreiro->setTipodaEspada (guerreiro.espadadoGuerreiro->getTipodaEspada());
-    espadadoGuerreiro->setComprimentodaEspada (guerreiro.espadadoGuerreiro->getComprimentodaEspada());
-    espadadoGuerreiro->setEmpunhada(guerreiro.espadadoGuerreiro->getEmpunhada());
-    
-    quantidadeRecompensas = guerreiro.quantidadeRecompensas;
-    
-    delete []recompensas;
-    recompensas = new float[quantidadeRecompensas];
-    for(int i=0; i<quantidadeRecompensas;i++)
-        recompensas[i] = guerreiro.recompensas[i];
 }
 bool Guerreiro::operator==(const Guerreiro &guerreiro) const
 {
-        if (this->nomedoGuerreiro == guerreiro.nomedoGuerreiro && this->strenght == guerreiro.strenght && 
-        this->agility == guerreiro.agility && this->intelligence == guerreiro.intelligence &&
-        this->life == guerreiro.life && this->mana == guerreiro.mana && this->armor == guerreiro.armor && this->damage == guerreiro.damage)
+        if (this->nomedoPersonagem == guerreiro.nomedoPersonagem && this->strenght == guerreiro.strenght && 
+        this->agility == guerreiro.agility && this->life == guerreiro.life && this->armor == guerreiro.armor)
             return true;
         return false;
 }

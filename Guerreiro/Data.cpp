@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "Data.h"
 
 Data::Data(int d, int m, int a)

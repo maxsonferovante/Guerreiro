@@ -1,7 +1,7 @@
-#include<iostream>
+
 #include "Espada.h"
 
-using std::cout;
+
 Espada::Espada(string tipo, float comprimento, bool emp)
 {
     this->tipodaEspada = tipo;
