@@ -22,7 +22,7 @@ Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espa
         quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro(const Guerreiro &outro)
-:Personagem(outro.nomedoPersonagem, outro.datadeNascimento.getday(), outro.datadeNascimento.getmonth(), outro.datadeNascimento.getyear())
+:Personagem (static_cast < Personagem > (outro))
 {
     this->strenght = outro.strenght;
     this->agility = outro.agility;

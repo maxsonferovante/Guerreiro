@@ -11,7 +11,7 @@ Mago:: Mago(string nome,int dia, int mes, int ano)
 
 }
 Mago::Mago(const Mago &outro)
-:Personagem(outro.nomedoPersonagem, outro.datadeNascimento.getday(), outro.datadeNascimento.getmonth(), outro.datadeNascimento.getyear())
+:Personagem (static_cast < Personagem > (outro))
 {
     this->mana = outro.mana;
     this->intelligence = outro.intelligence;
