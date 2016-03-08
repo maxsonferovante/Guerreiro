@@ -30,14 +30,6 @@ Guerreiro::Guerreiro(const Guerreiro &outro)
  
     this->espadadoGuerreiro = outro.espadadoGuerreiro;
     
-    /*Inicio da duvida: Será se é recomendado a implementação dessa forma ??????*/
-    
-    this->quantidadeRecompensas = outro.quantidadeRecompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];
-    for (int i=0;i<this->quantidadeRecompensas-1;i++)
-            this->recompensas[i] = outro.recompensas[i];
-    
-    /*Fim da duvida.*/
     quantidadedeGuerreiros++;
 }
 
@@ -169,9 +161,7 @@ void Guerreiro::desordenarArmaduraVestida()
 ostream &operator<<(ostream &output, const Guerreiro &guerreiro )
 {
     output << static_cast < Personagem > (guerreiro);
-    output <<"\nNome do Guerreiro: " <<guerreiro.nomedoPersonagem;
-    output <<"\n" <<"Quantidade de vida: "<<guerreiro.life; 
-    output <<"\n" <<"Quantidade de mana: "<<guerreiro.mana;
+    output <<"\nForca: "<<guerreiro.strenght<<"\nAgilidade: "<<guerreiro.agility<<"\nResistencia: "<<guerreiro.armor;
     return output;
 }
 
@@ -182,19 +172,8 @@ const Guerreiro& Guerreiro::operator=(const Guerreiro &guerreiro)
     this->agility = guerreiro.agility;
     this->armor = guerreiro.armor;
     
-    this->nomedoPersonagem = guerreiro.nomedoPersonagem;
-    this->life = guerreiro.life;
-    this->quantidadeRecompensas = guerreiro.quantidadeRecompensas;
-    
-    delete [] recompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];
-     for (int i=0; i<this->quantidadeRecompensas-1;i++)
-        this->recompensas[i] = guerreiro.recompensas[i];
-    
-    datadeNascimento.setday(guerreiro.datadeNascimento.getday());
-    datadeNascimento.setmonth(guerreiro.datadeNascimento.getmonth());
-    datadeNascimento.setyear(guerreiro.datadeNascimento.getyear());
-    
+    static_cast < Personagem > (*this) = Personagem (static_cast<Personagem> (guerreiro));
+ 
 }
 bool Guerreiro::operator==(const Guerreiro &guerreiro) const
 {

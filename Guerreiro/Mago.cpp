@@ -15,15 +15,6 @@ Mago::Mago(const Mago &outro)
 {
     this->mana = outro.mana;
     this->intelligence = outro.intelligence;
-    
-    this->life = outro.life;
-    
-    /*Inicio da duvida: Será se é recomendado a implementação dessa forma ??????*/
-    this->quantidadeRecompensas = outro.quantidadeRecompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];
-    for (int i=0;i<this->quantidadeRecompensas-1;i++)
-            this->recompensas[i] = outro.recompensas[i];
-    /*Fim da duvida.*/
 }
 Mago::~Mago()
 {
@@ -49,17 +40,5 @@ const Mago& Mago::operator=(const Mago &mago)
 {
     this->mana = mago.mana;
     this->intelligence = mago.intelligence;
-    
-    this->nomedoPersonagem = mago.nomedoPersonagem;
-    this->life = mago.life;
-    this->quantidadeRecompensas = mago.quantidadeRecompensas;
-    
-    delete [] recompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];
-     for (int i=0; i<this->quantidadeRecompensas-1;i++)
-        this->recompensas[i] = mago.recompensas[i];
-    
-    datadeNascimento.setday(mago.datadeNascimento.getday());
-    datadeNascimento.setmonth(mago.datadeNascimento.getmonth());
-    datadeNascimento.setyear(mago.datadeNascimento.getyear());
+    static_cast < Personagem > (*this) = Personagem (static_cast <Personagem> (mago))
 }

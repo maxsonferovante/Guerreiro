@@ -27,7 +27,8 @@ protected:
     Data datadeNascimento;
     const static int IncrementoLife;
     const static int DecrementoLife;
-    
+
+public:    
     const Personagem &operator=(const Personagem &);
 };
 

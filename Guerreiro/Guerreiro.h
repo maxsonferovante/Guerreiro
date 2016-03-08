@@ -55,8 +55,6 @@ public:
 private:
     int strenght;
     int agility;
-    int intelligence;
-    int mana;
     int armor;
     Espada *espadadoGuerreiro;
     
