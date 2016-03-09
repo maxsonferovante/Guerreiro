@@ -22,7 +22,18 @@ void Espartano::mudarlinhanaInfantaria()
     if (this->linhadaInfantaria == 3 || this->linhadaInfantaria == 2) 
         this->linhadaInfantaria --;
     else
-        cout<<"O Guerreiro Espartano ja esta na linha "
+        cout<<"O Guerreiro Espartano ja esta na linha ";
     
 }
-
+const Espartano& Espartano::operator=(const Espartano &espartano)
+{
+    this->linhadaInfantaria = espartano.linhadaInfantaria;
+    static_cast < Guerreiro > (*this) = Guerreiro(static_cast < Guerreiro > (espartano));
+    
+}
+ostream & operator<<(ostream &output, const Espartano & espartano)
+{
+        output << static_cast < Guerreiro > (espartano);
+        output <<"\nLinha da Infantaria: "<<espartano.linhadaInfantaria;
+        return output;
+}

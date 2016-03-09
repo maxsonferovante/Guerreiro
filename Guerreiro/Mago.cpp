@@ -40,5 +40,5 @@ const Mago& Mago::operator=(const Mago &mago)
 {
     this->mana = mago.mana;
     this->intelligence = mago.intelligence;
-    static_cast < Personagem > (*this) = Personagem (static_cast <Personagem> (mago))
+    static_cast < Personagem > (*this) = Personagem (static_cast <Personagem> (mago));
 }
