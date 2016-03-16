@@ -56,29 +56,3 @@ void Personagem::adicionarRecompensas(float recompensa)
         this->recompensas[0] = recompensa;
     }
 }
-
-ostream &operator<<(ostream &output, const Personagem &personagem)
-{
-    output <<"\nNome do Personagem: "<<personagem.nomedoPersonagem;
-    output <<"\nQuantidade de Vida: "<<personagem.life;
-    output <<"\nQuantidade de Recompensas: "<<personagem.quantidadeRecompensas;
-    output <<"Valores das Recompensas: ";
-    for (int i=0; i<personagem.quantidadeRecompensas-1;i++)
-        output <<"\n "<<i+1<<" - "<<personagem.recompensas[i];
-    return output;
-}
-const Personagem& Personagem::operator=(const Personagem &personagem)
-{
-    this->nomedoPersonagem = personagem.nomedoPersonagem;
-    this->life = personagem.life;
-    this->quantidadeRecompensas = personagem.quantidadeRecompensas;
-    
-    delete [] recompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];
-    for (int i=0; i<this->quantidadeRecompensas-1;i++)
-        this->recompensas[i] = personagem.recompensas[i];
-    
-    datadeNascimento.setday(personagem.datadeNascimento.getday());
-    datadeNascimento.setmonth(personagem.datadeNascimento.getmonth());
-    datadeNascimento.setyear(personagem.datadeNascimento.getyear());
-}

@@ -10,13 +10,12 @@ using std::ostream;
 
 class Mago: public Personagem
 {
-    friend ostream & operator<<(ostream &, const Mago &);
 public:
     Mago(string, int, int, int);
     Mago(const Mago &);
     ~Mago();
-    void ataqueMagico(int &);
-    void defesaMagica(int &);
+    virtual void ataqueMagico() = 0;
+    virtual void defesaMagica() = 0;
 protected:
     int mana;
     int intelligence;
@@ -24,7 +23,6 @@ protected:
     const static int IncrementoIntelligence;
     const static int DecrementoMana;
     
-    const Mago &operator=(const Mago &);
 };
 
 #endif // MAGO_H

@@ -13,7 +13,7 @@ using std::cout;
 
 class Guerreiro: public Personagem
 {
-    friend ostream & operator<<(ostream &, const Guerreiro &);
+
 public:
     Guerreiro(Espada *);
     Guerreiro(const string &, int, int, int , Espada *);
@@ -27,9 +27,9 @@ public:
     void alimentarGuerreiro();
     void exibirAtributos() const;
 
-    void ataqueFisicodoGuerreiro(int&);
-    void ataqueMagicodoGuerreiro(int&);
-    bool defesadoGuerreiro(int);
+    virtual void ataqueFisicodoGuerreiro() = 0;
+    virtual bool defesadoGuerreiro() =0 ;
+    
     void ataqueEspadaGuerreiro(int &);
     
     static void ordenarArmaduraVestida();
@@ -50,8 +50,6 @@ public:
     int getManadoGuerreiro() const;
     int getArmorGuerreiro() const;
     
-    const Guerreiro &operator=(const Guerreiro &);
-    bool operator==(const Guerreiro &) const;
 private:
     int strenght;
     int agility;

@@ -12,7 +12,6 @@ using std::cout;
 
 class Personagem
 {
-    friend ostream & operator<<(ostream &, const Personagem &);
 public:
     Personagem(string, int , int , int);
     Personagem(const Personagem &);
@@ -28,8 +27,6 @@ protected:
     const static int IncrementoLife;
     const static int DecrementoLife;
 
-public:    
-    const Personagem &operator=(const Personagem &);
 };
 
 #endif // PERSONAGEM_H

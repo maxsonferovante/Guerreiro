@@ -22,7 +22,6 @@ Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espa
         quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro(const Guerreiro &outro)
-:Personagem (static_cast < Personagem > (outro))
 {
     this->strenght = outro.strenght;
     this->agility = outro.agility;
@@ -81,30 +80,6 @@ void Guerreiro::regenerarGuerreiro (){
     Sleep(3000); // tempo do treino.
     this->life += this->IncrementoLife;
 }
-void Guerreiro::ataqueFisicodoGuerreiro (int &armordoInimigo ){
-    
-    cout<<"\nO Guerreiro "<<this->nomedoPersonagem<<" esta atacando fisicamente...\n";
-	if ( (this->agility + this->strenght/4) > armordoInimigo)
-        armordoInimigo -= (this->agility + this->strenght)/3;  
-    else
-        if( (this->agility + this->strenght/4) == armordoInimigo)
-            armordoInimigo -= (this->agility + this->strenght)/5;
-        else
-            cout<<"\nO Inimigo defendou o ataque fisico...\n";
-    
-    if (armordoInimigo < 0) armordoInimigo = 0;
-}
-bool Guerreiro::defesadoGuerreiro( int ataquedoInimigo){
-    
-    if (this->armor < ataquedoInimigo )
-        {
-            this->life -= (ataquedoInimigo/this->armor);
-            cout<<"\nLife do Guerreiro "<<this->life<<std::endl;
-            return false;
-        }
-    else
-        return true;
-}
 void Guerreiro::ataqueEspadaGuerreiro(int &resistenciadoInimigo)
 {
     if (espadadoGuerreiro->getEmpunhada())
@@ -156,29 +131,4 @@ void Guerreiro::desordenarArmaduraVestida()
             cout<<"\nArmaduras guardadas...\n";
             armaduraVestida = false;
     }
-}
-
-ostream &operator<<(ostream &output, const Guerreiro &guerreiro )
-{
-    output << static_cast < Personagem > (guerreiro);
-    output <<"\nForca: "<<guerreiro.strenght<<"\nAgilidade: "<<guerreiro.agility<<"\nResistencia: "<<guerreiro.armor;
-    return output;
-}
-
-const Guerreiro& Guerreiro::operator=(const Guerreiro &guerreiro)
-{
-
-    this->strenght = guerreiro.strenght;
-    this->agility = guerreiro.agility;
-    this->armor = guerreiro.armor;
-    
-    static_cast < Personagem > (*this) = Personagem (static_cast<Personagem> (guerreiro));
- 
-}
-bool Guerreiro::operator==(const Guerreiro &guerreiro) const
-{
-        if (this->nomedoPersonagem == guerreiro.nomedoPersonagem && this->strenght == guerreiro.strenght && 
-        this->agility == guerreiro.agility && this->life == guerreiro.life && this->armor == guerreiro.armor)
-            return true;
-        return false;
 }
