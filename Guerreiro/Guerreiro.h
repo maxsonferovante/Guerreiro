@@ -13,7 +13,6 @@ using std::cout;
 
 class Guerreiro: public Personagem
 {
-
 public:
     Guerreiro(Espada *);
     Guerreiro(const string &, int, int, int , Espada *);
@@ -27,14 +26,15 @@ public:
     void alimentarGuerreiro();
     void exibirAtributos() const;
 
-    virtual void ataqueFisicodoGuerreiro() = 0;
-    virtual bool defesadoGuerreiro() =0 ;
+    virtual void ataqueFisicodoGuerreiro(int &) = 0;
+    virtual void defesadoGuerreiro(int &) =0 ;
     
     void ataqueEspadaGuerreiro(int &);
     
+    void adicionarRecompensas(float);
+    
     static void ordenarArmaduraVestida();
     static void desordenarArmaduraVestida();
-
 
 
     void setStrenghtdoGuerreiro(int);

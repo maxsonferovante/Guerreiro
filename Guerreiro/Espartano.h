@@ -17,8 +17,10 @@ public:
     ~Espartano();
     
     void mudarlinhanaInfantaria();
+    void ataqueFisicodoGuerreiro(int &);
+    void defesadoGuerreiro(int &);
     const Espartano &operator=(const Espartano &);
-    
+        
 private:
     int linhadaInfantaria;
 };

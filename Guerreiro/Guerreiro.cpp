@@ -18,7 +18,7 @@ Guerreiro::Guerreiro(Espada *espada)
 Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espada)
 :strenght(33), agility(33), armor(3),Personagem(nome,dia,mes,ano)
 {
-        this->espadadoGuerreiro = espada;
+        this->espadadoGuerreiro = 0;
         quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro(const Guerreiro &outro)
@@ -26,7 +26,21 @@ Guerreiro::Guerreiro(const Guerreiro &outro)
     this->strenght = outro.strenght;
     this->agility = outro.agility;
     this->armor = outro.armor;
- 
+    
+    this->nomedoPersonagem = outro.nomedoPersonagem;
+    this->life = outro.life;
+    this->quantidadeRecompensas = outro.quantidadeRecompensas;
+
+    delete [] recompensas;
+    this->recompensas = new float[this->quantidadeRecompensas];    
+    
+    for (int i=0; i<this->quantidadeRecompensas-1;i++)
+        this->recompensas[i] = outro.recompensas[i];
+
+    datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
+    datadeNascimento.setyear(outro.datadeNascimento.getyear());
+    datadeNascimento.setday(outro.datadeNascimento.getday());
+    
     this->espadadoGuerreiro = outro.espadadoGuerreiro;
     
     quantidadedeGuerreiros++;
@@ -96,6 +110,31 @@ void Guerreiro::ataqueEspadaGuerreiro(int &resistenciadoInimigo)
     }
     else
         cout<<"\nEspada do Guerreiro "<<this->nomedoPersonagem<<" desempunhada...\n";
+}
+//Método virtual da classe abstrata Personagem.
+void Guerreiro::adicionarRecompensas(float recompensa)
+{
+    if(this->quantidadeRecompensas !=0)
+    {
+        float *aux = new float[this->quantidadeRecompensas];
+    
+        for (int i=0 ; i <this->quantidadeRecompensas-1; i++)
+            aux[i] = this->recompensas[i];
+                
+        delete [] recompensas;
+                
+        recompensas = new float[++this->quantidadeRecompensas];
+        for (int i=0; i<this->quantidadeRecompensas;i++)
+            this->recompensas[i] = aux[i] ;
+                
+        this->recompensas[this->quantidadeRecompensas-1] = recompensa;
+        delete [] aux;            
+    }
+    else
+    {
+        this->recompensas = new float[++this->quantidadeRecompensas];
+        this->recompensas[0] = recompensa;
+    }
 }
 void Guerreiro::exibirAtributos() const{
     cout<<"\n\nNome: "<<this->nomedoPersonagem;

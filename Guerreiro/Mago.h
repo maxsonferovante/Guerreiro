@@ -14,8 +14,10 @@ public:
     Mago(string, int, int, int);
     Mago(const Mago &);
     ~Mago();
-    virtual void ataqueMagico() = 0;
-    virtual void defesaMagica() = 0;
+    virtual void ataqueMagico(int &) = 0;
+    virtual void defesaMagica(int &) = 0;
+    
+    void adicionarRecompensas(float);
 protected:
     int mana;
     int intelligence;

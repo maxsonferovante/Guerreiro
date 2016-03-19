@@ -1,5 +1,3 @@
-
-
 #include "Personagem.h"
 
 
@@ -30,29 +28,4 @@ Personagem::Personagem(const Personagem & outro)
 Personagem::~Personagem()
 {
     delete [] recompensas;
-}
-
-void Personagem::adicionarRecompensas(float recompensa)
-{
-    if(this->quantidadeRecompensas !=0)
-    {
-        float *aux = new float[this->quantidadeRecompensas];
-    
-        for (int i=0 ; i <this->quantidadeRecompensas-1; i++)
-            aux[i] = this->recompensas[i];
-                
-        delete [] recompensas;
-                
-        recompensas = new float[++this->quantidadeRecompensas];
-        for (int i=0; i<this->quantidadeRecompensas;i++)
-            this->recompensas[i] = aux[i] ;
-                
-        this->recompensas[this->quantidadeRecompensas-1] = recompensa;
-        delete [] aux;            
-    }
-    else
-    {
-        this->recompensas = new float[++this->quantidadeRecompensas];
-        this->recompensas[0] = recompensa;
-    }
 }

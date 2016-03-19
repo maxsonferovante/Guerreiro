@@ -17,7 +17,7 @@ public:
     Personagem(const Personagem &);
     ~Personagem();
     
-    void adicionarRecompensas(float);
+    virtual void adicionarRecompensas(float) = 0;
 protected:
     string nomedoPersonagem;
     int life;
