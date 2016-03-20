@@ -12,7 +12,7 @@ class Espartano: public Guerreiro
 {
     friend ostream & operator<<(ostream &, const Espartano &);
 public:
-    Espartano(int, const string, int, int , int, Espada *);
+    Espartano(int, const string &, int, int , int, Espada *);
     Espartano(const Espartano &);
     ~Espartano();
     

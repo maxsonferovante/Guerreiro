@@ -18,7 +18,7 @@ Guerreiro::Guerreiro(Espada *espada)
 Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espada)
 :strenght(33), agility(33), armor(3),Personagem(nome,dia,mes,ano)
 {
-        this->espadadoGuerreiro = 0;
+        this->espadadoGuerreiro = espada;
         quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro(const Guerreiro &outro)
@@ -29,19 +29,14 @@ Guerreiro::Guerreiro(const Guerreiro &outro)
     
     this->nomedoPersonagem = outro.nomedoPersonagem;
     this->life = outro.life;
-    this->quantidadeRecompensas = outro.quantidadeRecompensas;
-
-    delete [] recompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];    
     
-    for (int i=0; i<this->quantidadeRecompensas-1;i++)
-        this->recompensas[i] = outro.recompensas[i];
-
+    this->recompensas = this->recompensas;
+    this->xp = outro.xp;
     datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
     datadeNascimento.setyear(outro.datadeNascimento.getyear());
     datadeNascimento.setday(outro.datadeNascimento.getday());
     
-    this->espadadoGuerreiro = outro.espadadoGuerreiro;
+    this->espadadoGuerreiro = 0; // Será corrigido futuramente.s
     
     quantidadedeGuerreiros++;
 }
@@ -78,22 +73,6 @@ int Guerreiro::getArmorGuerreiro() const{
 	return this->armor;
 }
 
-void Guerreiro::treinarGuerreiro (){
-	cout<<"\nTodos os dias o Guerreiro "<<this->nomedoPersonagem<<" treina cada um de seus atributos...";
-	cout<<"\nO treino foi concluido e o Guerreiro "<<this->nomedoPersonagem<<" ganhou +2 em cada atributo e gastou 30 de mana.\nDescanse agora!\n";
-	
-    Sleep(3000); // tempo do treino.
-	
-    this->strenght += IncrementoStrenght;
-	this->agility += IncrementoAgility;
-	this->armor += IncrementoArmor;
-
-}
-void Guerreiro::regenerarGuerreiro (){
-	cout<<"\nO Guerreiro "<<this->nomedoPersonagem<<" descansa para gerenerar nama gasta no dia, ganha +25 de mana...";
-    Sleep(3000); // tempo do treino.
-    this->life += this->IncrementoLife;
-}
 void Guerreiro::ataqueEspadaGuerreiro(int &resistenciadoInimigo)
 {
     if (espadadoGuerreiro->getEmpunhada())
@@ -114,42 +93,15 @@ void Guerreiro::ataqueEspadaGuerreiro(int &resistenciadoInimigo)
 //Método virtual da classe abstrata Personagem.
 void Guerreiro::adicionarRecompensas(float recompensa)
 {
-    if(this->quantidadeRecompensas !=0)
-    {
-        float *aux = new float[this->quantidadeRecompensas];
-    
-        for (int i=0 ; i <this->quantidadeRecompensas-1; i++)
-            aux[i] = this->recompensas[i];
-                
-        delete [] recompensas;
-                
-        recompensas = new float[++this->quantidadeRecompensas];
-        for (int i=0; i<this->quantidadeRecompensas;i++)
-            this->recompensas[i] = aux[i] ;
-                
-        this->recompensas[this->quantidadeRecompensas-1] = recompensa;
-        delete [] aux;            
-    }
-    else
-    {
-        this->recompensas = new float[++this->quantidadeRecompensas];
-        this->recompensas[0] = recompensa;
-    }
+    this->recompensas.push_back(recompensa);
 }
-void Guerreiro::exibirAtributos() const{
-    cout<<"\n\nNome: "<<this->nomedoPersonagem;
-    cout<<"\nStrenght: "<<this->strenght;
-    cout<<"\nAgility: "<<this->agility;
-    cout<<"\nLife: "<<this->life;
-
-    cout<<"\nArmor: "<<this->armor<<std::endl;
-    
-    cout<<"Recompensas: ";
-    for(int i=0; i < quantidadeRecompensas;i++)
-        cout<<this->recompensas[i]<<" ";
-    
-    datadeNascimento.exibirData();
-    espadadoGuerreiro->exibirEspada();
+void Guerreiro::aumentarXp()
+{
+    this->life += this->life * ( ( this->IncrementoLife + this->xp ) / 100 );
+    this->strenght += this->strenght * ( ( this->IncrementoStrenght + this->xp ) / 100);
+    this->agility += this->agility * ( ( this->IncrementoAgility + this->xp ) /100);
+    this->armor += this->armor* ( ( this->IncrementoArmor + this->xp ) /100);
+    this->xp++;
 }
 void Guerreiro::ordenarArmaduraVestida()
 {

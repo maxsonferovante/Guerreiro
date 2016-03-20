@@ -32,6 +32,7 @@ public:
     void ataqueEspadaGuerreiro(int &);
     
     void adicionarRecompensas(float);
+    void aumentarXp();
     
     static void ordenarArmaduraVestida();
     static void desordenarArmaduraVestida();
@@ -50,7 +51,7 @@ public:
     int getManadoGuerreiro() const;
     int getArmorGuerreiro() const;
     
-private:
+protected:
     int strenght;
     int agility;
     int armor;

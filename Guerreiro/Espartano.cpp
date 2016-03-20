@@ -1,6 +1,6 @@
 #include "Espartano.h"
 
-Espartano::Espartano(int linha, const string nome, int dia, int mes, int ano, Espada * espada)
+Espartano::Espartano(int linha, const string &nome, int dia, int mes, int ano, Espada * espada)
 :Guerreiro(nome, dia,mes,ano, espada)
 {
     if(linha > 0 && linha<4)
@@ -16,14 +16,9 @@ Espartano::Espartano(const Espartano &outro)
     
     this->nomedoPersonagem = outro.nomedoPersonagem;
     this->life = outro.life;
-    this->quantidadeRecompensas = outro.quantidadeRecompensas;
-
-    delete [] recompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];    
     
-    for (int i=0; i<this->quantidadeRecompensas-1;i++)
-        this->recompensas[i] = outro.recompensas[i];
-
+    this->recompensas = outro.recompensas;
+    
     datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
     datadeNascimento.setyear(outro.datadeNascimento.getyear())
     datadeNascimento.setday(outro.datadeNascimento.getday());
@@ -74,12 +69,8 @@ const Espartano& Espartano::operator=(const Espartano &espartano)
     this->life = espartano.life;
     this->quantidadeRecompensas = espartano.quantidadeRecompensas;
 
-    delete [] recompensas;
-    this->recompensas = new float[this->quantidadeRecompensas];    
+    this->recompensas = espartano.recompensas;
     
-    for (int i=0; i<this->quantidadeRecompensas-1;i++)
-        this->recompensas[i] = espartano.recompensas[i];
-
     datadeNascimento.setmonth(espartano.datadeNascimento.getmonth());
     datadeNascimento.setyear(espartano.datadeNascimento.getyear())
     datadeNascimento.setday(espartano.datadeNascimento.getday());
@@ -102,7 +93,7 @@ ostream & operator<<(ostream &output, const Espartano & espartano)
         output <<"\nEmpunhada (1 - SIM ou 0 - NAO):"<<espartano.espadadoGuerreiro->empunhada;
         
         output<<"\n\rt-----RECOMPENSAS-----";
-        for (int i=0;i<espartano.quantidadeRecompensas;i++)
+        for (int i=0;i<espartano.recompensas.size();i++)
             output <<" "<<espartano.recompensas[i];
             
         return output;

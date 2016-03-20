@@ -2,27 +2,30 @@
 #define PERSONAGEM_H
 
 
-#include<string>
-#include<iostream>
+#include <string>
+#include <iostream>
+#include <vector>
 #include "Data.h"
 
 using std::string;
 using std::ostream;
 using std::cout;
+using std::vector;
 
 class Personagem
 {
 public:
-    Personagem(string, int , int , int);
+    Personagem(const string &, int , int , int);
     Personagem(const Personagem &);
     ~Personagem();
     
     virtual void adicionarRecompensas(float) = 0;
+    virtual void aumentarXp();
 protected:
     string nomedoPersonagem;
     int life;
-    float *recompensas;
-    int quantidadeRecompensas;
+    vector <float> recompensas;
+    int xp;
     Data datadeNascimento;
     const static int IncrementoLife;
     const static int DecrementoLife;
