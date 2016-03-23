@@ -14,10 +14,12 @@ using std::cout;
 class Guerreiro: public Personagem
 {
 public:
+    inline Guerreiro(){};
     Guerreiro(Espada *);
     Guerreiro(const string &, int, int, int , Espada *);
-
+    Guerreiro(const Guerreiro &);
     ~Guerreiro();
+
 
     void treinarGuerreiro();
     void regenerarGuerreiro();

@@ -1,24 +1,41 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <typeinfo>
 #include "Personagem.h"
+
 #include "Espada.h"
-#include "Guerreiro.h"
-#include "Mago.h"
 #include "Espartano.h"
 #include "Gandalf.h"
 
 using std::cout;
 using std::cin;
+using std::vector;
 
 int main(){
-    Espada *espada = new Espada();
-    Espartano danny(1,"Caloteira",29,02,1996,espada);
+    vector < Personagem *> personagens;
+    personagens.push_back(new Espartano(1,"Caloteira",29,02,1996,new Espada()));
+    personagens.push_back(new Espartano(2,"Migo",21,04,1997,new Espada()));
+    personagens.push_back(new Espartano(1,"Mexson",14,10,1994,new Espada()));
     
-    Gandalf lucas("Migo",21,04,1997,100);
-
-    cout<<lucas;
-
-    cout<<danny;
+    personagens.push_back(new Gandalf("Tavares",12,12,1212,50));    
+    personagens.push_back(new Gandalf("Antonio",21,01,1333,25));    
     
-    delete espada; // FAZENDO O QUE NUNCA FIZ AQUI NO MAIN.
+    for (int i=0; i<personagens.size(); i++)
+    {
+        Gandalf *gandalfPtr = dynamic_cast < Gandalf *> (personagens[i]);
+        if (gandalfPtr !=0)
+        {
+            gandalfPtr->aumentarXp();
+            cout<<"\nNovo Xp do Personagem "<<gandalfPtr->getNome()<<" eh "<<gandalfPtr->getXp();
+        }
+        cout<<"\nO Xp do Personagem "<<gandalfPtr->getNome()<<" eh "<<gandalfPtr->getXp();
+    }
+    
+    for (int i =0; i<personagens.size(); i++)
+    {
+        cout<<"\n deletando os objetos do"<<typeid( *personagens[i] ).name();
+        delete personagens[i];
+    }
+    
     return 0;
 }

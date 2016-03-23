@@ -15,11 +15,13 @@ using std::vector;
 class Personagem
 {
 public:
+    Personagem();
     Personagem(const string &, int , int , int);
+    Personagem(const Personagem &);
     ~Personagem();
     
     virtual void adicionarRecompensas(float) = 0;
-    virtual void aumentarXp();
+    virtual void aumentarXp() = 0;
 protected:
     string nomedoPersonagem;
     int life;

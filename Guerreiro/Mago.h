@@ -11,13 +11,18 @@ using std::ostream;
 class Mago: public Personagem
 {
 public:
+    inline Mago() {};
     Mago(const string &, int, int, int);
+    Mago(const Mago &);
     ~Mago();
+    
     virtual void ataqueMagico(int &) = 0;
     virtual void defesaMagica(int &) = 0;
     
     void adicionarRecompensas(float);
     void aumentarXp();
+    string getNome();
+    int getXp();
 protected:
     int mana;
     int intelligence;

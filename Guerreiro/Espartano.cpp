@@ -1,6 +1,6 @@
 #include "Espartano.h"
 
-Espartano::Espartano(int linha, const string &nome, int dia, int mes, int ano, Espada * espada)
+Espartano::Espartano(int linha, const string &nome, int dia, int mes, int ano, Espada *espada)
 :Guerreiro(nome, dia,mes,ano, espada)
 {
     if(linha > 0 && linha<4)
@@ -29,6 +29,11 @@ Espartano::~Espartano()
 {
     
 }
+
+string Espartano::getNome() { return this->nomedoPersonagem; }
+
+int Espartano::getXp() { return this->xp; }
+
 void Espartano::mudarlinhanaInfantaria()
 {
     if (this->linhadaInfantaria == 3 || this->linhadaInfantaria == 2) 

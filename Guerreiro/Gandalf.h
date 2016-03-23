@@ -19,8 +19,8 @@ public:
     Gandalf(const Gandalf &);
     ~Gandalf();
     
-    void ataqueMagico(int &);
-    void defesaMagica(int &);
+    virtual void ataqueMagico(int &);
+    virtual void defesaMagica(int &);
     
     const Gandalf &operator=(const Gandalf &);
 };

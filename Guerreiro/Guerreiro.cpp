@@ -10,30 +10,43 @@ const int Guerreiro::IncrementoDamage = 2;
 bool Guerreiro::armaduraVestida = false;
 
 Guerreiro::Guerreiro(Espada *espada)
-:strenght(33), agility(33), armor(3)
+:strenght(33), agility(33), armor(3), Personagem("Sem nome",21,12,2012)
 {
-    this->nomedoPersonagem = "Sem Nome";
-    this->datadeNascimento.setday(21);
-    this->datadeNascimento.setmonth(12);
-    this->datadeNascimento.setyear(2012);
-    this->espadadoGuerreiro = espada; 
+    this->espadadoGuerreiro = espada;
     quantidadedeGuerreiros++;
 }
 Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espada)
-:strenght(33), agility(33), armor(3)
+:strenght(33), agility(33), armor(3), Personagem(nome, dia, mes, ano)
 {
-        this->nomedoPersonagem = nome;
-        this->datadeNascimento.setday(dia);
-        this->datadeNascimento.setmonth(mes);
-        this->datadeNascimento.setyear(ano);
-        
         this->espadadoGuerreiro = espada;
         quantidadedeGuerreiros++;
 }
+ Guerreiro::Guerreiro(const Guerreiro &outro)
+ 
+ {
+     this->strenght = outro.strenght;
+     this->agility = outro.agility;
+     this->armor = outro.armor;
+ 
+   
+    this->nomedoPersonagem = outro.nomedoPersonagem;
+    this->life = outro.life;
+    this->recompensas = outro.recompensas;
+    
+    datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
+    datadeNascimento.setyear(outro.datadeNascimento.getyear());
+    datadeNascimento.setday(outro.datadeNascimento.getday());
+    
+     this->espadadoGuerreiro = 0;
+     
+     quantidadedeGuerreiros++;
+    }
+    
 Guerreiro::~Guerreiro(){
     quantidadedeGuerreiros--;
     
 }
+
 void Guerreiro::setStrenghtdoGuerreiro ( int S){
 	if (S> 0)
         this->strenght = S;
