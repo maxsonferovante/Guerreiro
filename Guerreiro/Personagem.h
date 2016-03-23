@@ -17,7 +17,6 @@ class Personagem
 public:
     Personagem();
     Personagem(const string &, int , int , int);
-    Personagem(const Personagem &);
     ~Personagem();
     
     virtual void adicionarRecompensas(float) = 0;
