@@ -11,7 +11,7 @@ using std::ostream;
 
 class Gandalf: public Mago
 {
-    friend ostream & operator<<(ostream &, const Gandalf &);
+    friend ostream &operator<<(ostream &, const Gandalf &);
 private:
     int prepotencia;
 public:

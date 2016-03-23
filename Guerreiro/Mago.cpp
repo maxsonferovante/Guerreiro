@@ -5,25 +5,13 @@ const int Mago::IncrementoMana = 13;
 const int Mago::IncrementoIntelligence = 3;
 const int Mago::DecrementoMana = 13;
 
-Mago:: Mago(const string &nome,int dia, int mes, int ano)
-:intelligence(33), mana(800), Personagem(nome, dia, mes, ano)
+Mago::Mago(const string &nome,int dia, int mes, int ano)
+:intelligence(33), mana(800)
 {
     this->nomedoPersonagem = nome;
-    
-}
-Mago::Mago(const Mago &outro)
-{
-    this->nomedoPersonagem = outro.nomedoPersonagem;
-    this->life = outro.life;
-    this->recompensas = outro.recompensas; // agora são do tipo vector.
-    this->xp = outro.xp;
-
-    datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
-    datadeNascimento.setyear(outro.datadeNascimento.getyear());
-    datadeNascimento.setday(outro.datadeNascimento.getday());
-    
-    this->mana = outro.mana;
-    this->intelligence = outro.intelligence;
+    this->datadeNascimento.setday(dia);
+    this->datadeNascimento.setmonth(mes);
+    this->datadeNascimento.setyear(ano);           
 }
 Mago::~Mago()
 {

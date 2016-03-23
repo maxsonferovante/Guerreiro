@@ -10,15 +10,6 @@ Personagem::Personagem(const string &nome,int dia, int mes, int ano)
     this->nomedoPersonagem = nome;
     this->xp = 1;
 }
-Personagem::Personagem(const Personagem & outro)
-:datadeNascimento(outro.datadeNascimento)
-{
-    this->nomedoPersonagem = outro.nomedoPersonagem;
-    this->life = outro.life;
-    
-    this->recompensas = outro.recompensas;
-}
-
 Personagem::~Personagem()
 {
     delete [] recompensas;

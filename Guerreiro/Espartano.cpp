@@ -20,7 +20,7 @@ Espartano::Espartano(const Espartano &outro)
     this->recompensas = outro.recompensas;
     
     datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
-    datadeNascimento.setyear(outro.datadeNascimento.getyear())
+    datadeNascimento.setyear(outro.datadeNascimento.getyear());
     datadeNascimento.setday(outro.datadeNascimento.getday());
     
     this->linhadaInfantaria = outro.linhadaInfantaria;
@@ -50,7 +50,7 @@ void Espartano::ataqueFisicodoGuerreiro (int &armordoInimigo ){
     
     if (armordoInimigo < 0) armordoInimigo = 0;
 }
-void Espartano::defesadoGuerreiro( int ataquedoInimigo){
+void Espartano::defesadoGuerreiro( int &ataquedoInimigo){
     
     if (this->armor < ataquedoInimigo )
         {
@@ -67,12 +67,11 @@ const Espartano& Espartano::operator=(const Espartano &espartano)
     
     this->nomedoPersonagem = espartano.nomedoPersonagem;
     this->life = espartano.life;
-    this->quantidadeRecompensas = espartano.quantidadeRecompensas;
 
     this->recompensas = espartano.recompensas;
     
     datadeNascimento.setmonth(espartano.datadeNascimento.getmonth());
-    datadeNascimento.setyear(espartano.datadeNascimento.getyear())
+    datadeNascimento.setyear(espartano.datadeNascimento.getyear());
     datadeNascimento.setday(espartano.datadeNascimento.getday());
 }
 ostream & operator<<(ostream &output, const Espartano & espartano)
@@ -88,9 +87,9 @@ ostream & operator<<(ostream &output, const Espartano & espartano)
         output <<"\nNascido em "<<espartano.datadeNascimento.getday()<<"/"<<espartano.datadeNascimento.getmonth()<<"/"<<espartano.datadeNascimento.getyear();
         
         output <<"\n\t------ESPADA------";
-        output <<"\nMaterial: "<<espartano.espadadoGuerreiro->tipodaEspada;
-        output <<"\nComprimento: "<<espartano.espadadoGuerreiro->comprimentodaEspada;
-        output <<"\nEmpunhada (1 - SIM ou 0 - NAO):"<<espartano.espadadoGuerreiro->empunhada;
+        output <<"\nMaterial: "<<espartano.espadadoGuerreiro->getTipodaEspada();
+        output <<"\nComprimento: "<<espartano.espadadoGuerreiro->getComprimentodaEspada();
+        output <<"\nEmpunhada (1 - SIM ou 0 - NAO):"<<espartano.espadadoGuerreiro->getEmpunhada();
         
         output<<"\n\rt-----RECOMPENSAS-----";
         for (int i=0;i<espartano.recompensas.size();i++)

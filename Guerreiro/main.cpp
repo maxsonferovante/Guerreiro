@@ -18,5 +18,7 @@ int main(){
     cout<<lucas;
 
     cout<<danny;
+    
+    delete espada; // FAZENDO O QUE NUNCA FIZ AQUI NO MAIN.
     return 0;
 }

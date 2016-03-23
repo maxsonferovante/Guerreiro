@@ -1,11 +1,14 @@
 #include "Gandalf.h"
 
 Gandalf::Gandalf(const string &nome, int dia, int mes, int ano, int pre)
-:Personagem(nome, dia, mes,ano)
+:Mago(nome, dia, mes,ano)
 {
-    this-prepotencia = (pre <  0) ? 0 : pre;
+    if (pre > 0)
+        this->prepotencia = pre;
+    else 
+        this->prepotencia = 0;
 }
-Gandalf::Gandalf(const Gandalf & outro)
+Gandalf::Gandalf(const Gandalf &outro)
 {
     this->nomedoPersonagem = outro.nomedoPersonagem;
     this->life = outro.life;
@@ -26,18 +29,18 @@ Gandalf::~Gandalf()
 void Gandalf::ataqueMagico(int &resistenciaInimiga)
 {
     cout<<"\nO Mago "<<this->nomedoPersonagem<<" esta atacando magicamente...\n";
-	if ( ((this->intelligence + this->prepotencia)/4) > armordoInimigo)
+	if ( ((this->intelligence + this->prepotencia)/4) > resistenciaInimiga)
         resistenciaInimiga -= (this->intelligence + this->prepotencia)/3;  
     else
-        if( ((this->intelligence + this->prepotencia)/4) == armordoInimigo)
-            armordoInimigo -= (this->intelligence + this->prepotencia)/5;
+        if( ((this->intelligence + this->prepotencia)/4) == resistenciaInimiga)
+            resistenciaInimiga -= (this->intelligence + this->prepotencia)/5;
         else
             cout<<"\nO Inimigo defendou o ataque magico...\n";
     
     if (resistenciaInimiga < 0) resistenciaInimiga = 0;
 }
 
-void Gandalf:defesaMagica(int & ataquedoInimigo)
+void Gandalf::defesaMagica(int & ataquedoInimigo)
 {
     if (this->mana/8 < ataquedoInimigo )
         {
@@ -45,9 +48,8 @@ void Gandalf:defesaMagica(int & ataquedoInimigo)
             cout<<"\nLife do Mago "<<this->life<<std::endl;
         }
 }
-
-ostream & Gandalf::operator<<(ostream &, const Gandalf &gandalf)
-
+ostream &operator<<(ostream &output, const Gandalf &gandalf)
+{
         output <<"\n\t>>>>>>> Guerreiro Espartano <<<<<<";
         output <<"\nNome: "<<gandalf.nomedoPersonagem;
         output <<"\nMana: "<<gandalf.mana;
@@ -68,12 +70,11 @@ const Gandalf &Gandalf::operator=(const Gandalf &gandalf)
     this->intelligence = gandalf.intelligence;
     this->nomedoPersonagem = gandalf.nomedoPersonagem;
     this->life = gandalf.life;
-    this->quantidadeRecompensas = gandalf.quantidadeRecompensas;
 
     this->recompensas = gandalf.recompensas;
     
     datadeNascimento.setmonth(gandalf.datadeNascimento.getmonth());
-    datadeNascimento.setyear(gandalf.datadeNascimento.getyear())
+    datadeNascimento.setyear(gandalf.datadeNascimento.getyear());
     datadeNascimento.setday(gandalf.datadeNascimento.getday());
 
 }
