@@ -21,27 +21,7 @@ Guerreiro::Guerreiro( const string &nome,int dia, int mes, int ano, Espada *espa
         this->espadadoGuerreiro = espada;
         quantidadedeGuerreiros++;
 }
- Guerreiro::Guerreiro(const Guerreiro &outro)
- 
- {
-     this->strenght = outro.strenght;
-     this->agility = outro.agility;
-     this->armor = outro.armor;
- 
-   
-    this->nomedoPersonagem = outro.nomedoPersonagem;
-    this->life = outro.life;
-    this->recompensas = outro.recompensas;
-    
-    datadeNascimento.setmonth(outro.datadeNascimento.getmonth());
-    datadeNascimento.setyear(outro.datadeNascimento.getyear());
-    datadeNascimento.setday(outro.datadeNascimento.getday());
-    
-     this->espadadoGuerreiro = 0;
-     
-     quantidadedeGuerreiros++;
-    }
-    
+
 Guerreiro::~Guerreiro(){
     quantidadedeGuerreiros--;
     

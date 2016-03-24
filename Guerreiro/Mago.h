@@ -13,7 +13,6 @@ class Mago: public Personagem
 public:
     inline Mago() {};
     Mago(const string &, int, int, int);
-    Mago(const Mago &);
     ~Mago();
     
     virtual void ataqueMagico(int &) = 0;

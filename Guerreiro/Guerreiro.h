@@ -17,7 +17,7 @@ public:
     inline Guerreiro(){};
     Guerreiro(Espada *);
     Guerreiro(const string &, int, int, int , Espada *);
-    Guerreiro(const Guerreiro &);
+ 
     ~Guerreiro();
 
 
