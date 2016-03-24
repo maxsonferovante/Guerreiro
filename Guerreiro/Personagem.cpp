@@ -26,3 +26,7 @@ Personagem::Personagem(const Personagem &outro)
 Personagem::~Personagem(){
     
 }
+
+string Personagem::getNome() { return this->nomedoPersonagem; };
+
+int Personagem::getXp() { return this->xp; };

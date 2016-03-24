@@ -22,8 +22,6 @@ public:
     void ataqueFisicodoGuerreiro(int &);
     void defesadoGuerreiro(int &);
     const Espartano &operator=(const Espartano &);
-    string getNome();
-    int getXp();
 private:
     int linhadaInfantaria;
 };

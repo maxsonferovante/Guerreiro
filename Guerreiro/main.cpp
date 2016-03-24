@@ -20,21 +20,22 @@ int main(){
     personagens.push_back(new Gandalf("Tavares",12,12,1212,50));    
     personagens.push_back(new Gandalf("Antonio",21,01,1333,25));    
     
-    for (int i=0; i<personagens.size(); i++)
+    for (Personagem *p : personagens)
     {
-        Gandalf *gandalfPtr = dynamic_cast < Gandalf *> (personagens[i]);
+        Gandalf *gandalfPtr = dynamic_cast < Gandalf *> (p);
         if (gandalfPtr !=0)
         {
             gandalfPtr->aumentarXp();
             cout<<"\nNovo Xp do Personagem "<<gandalfPtr->getNome()<<" eh "<<gandalfPtr->getXp();
         }
-        cout<<"\nO Xp do Personagem "<<gandalfPtr->getNome()<<" eh "<<gandalfPtr->getXp();
+        cout<<"\nO Xp do Personagem "<<p->getNome()<<" eh "<<p->getXp();
+        
     }
     
-    for (int i =0; i<personagens.size(); i++)
+    for (Personagem *p : personagens)
     {
-        cout<<"\n deletando os objetos do"<<typeid( *personagens[i] ).name();
-        delete personagens[i];
+        cout<<"\n deletando os objetos do"<<typeid( p ).name();
+        delete p;
     }
     
     return 0;

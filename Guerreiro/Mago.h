@@ -21,8 +21,6 @@ public:
     
     void adicionarRecompensas(float);
     void aumentarXp();
-    string getNome();
-    int getXp();
 protected:
     int mana;
     int intelligence;

@@ -30,10 +30,6 @@ Espartano::~Espartano()
     
 }
 
-string Espartano::getNome() { return this->nomedoPersonagem; }
-
-int Espartano::getXp() { return this->xp; }
-
 void Espartano::mudarlinhanaInfantaria()
 {
     if (this->linhadaInfantaria == 3 || this->linhadaInfantaria == 2) 

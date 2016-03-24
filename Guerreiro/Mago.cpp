@@ -30,10 +30,6 @@ Mago::~Mago(){
     
 }
 
-string Mago::getNome() { return this->nomedoPersonagem; };
-
-int Mago::getXp() { return this->xp; };
-
 void Mago::adicionarRecompensas(float recompensa)
 {
     this->recompensas.push_back(recompensa); // A implementação mais simples da minha vida :D .

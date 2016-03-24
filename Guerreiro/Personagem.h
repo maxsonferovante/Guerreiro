@@ -22,6 +22,9 @@ public:
     
     virtual void adicionarRecompensas(float) = 0;
     virtual void aumentarXp() = 0;
+    string getNome();
+    int getXp();
+
 protected:
     string nomedoPersonagem;
     int life;
