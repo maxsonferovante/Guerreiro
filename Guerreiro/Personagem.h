@@ -20,9 +20,12 @@ public:
     ~Personagem();
     
     virtual void adicionarRecompensas(float) = 0;
-    virtual void aumentarXp() = 0;
+    virtual void aumentarXp(int = 1) = 0;
+    int getLife();
     string getNome();
     int getXp();
+    void setXp(int);
+    void setLife(int);
 
 protected:
     string nomedoPersonagem;

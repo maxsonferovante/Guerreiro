@@ -19,7 +19,7 @@ public:
     virtual void defesaMagica(int &) = 0;
     
     void adicionarRecompensas(float);
-    void aumentarXp();
+    void aumentarXp(int = 1);
 protected:
     int mana;
     int intelligence;

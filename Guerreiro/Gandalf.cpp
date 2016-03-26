@@ -50,7 +50,7 @@ void Gandalf::defesaMagica(int & ataquedoInimigo)
 }
 ostream &operator<<(ostream &output, const Gandalf &gandalf)
 {
-        output <<"\n\t>>>>>>> Guerreiro Espartano <<<<<<";
+        output <<"\n\t>>>>>>> MAGO <<<<<<";
         output <<"\nNome: "<<gandalf.nomedoPersonagem;
         output <<"\nMana: "<<gandalf.mana;
         output <<"\nInteligencia: "<<gandalf.intelligence;
@@ -58,7 +58,7 @@ ostream &operator<<(ostream &output, const Gandalf &gandalf)
         output <<"\n\t------DATA DE NASCIMENTO------";
         output <<"\nNascido em "<<gandalf.datadeNascimento.getday()<<"/"<<gandalf.datadeNascimento.getmonth()<<"/"<<gandalf.datadeNascimento.getyear();
                 
-        output<<"\n\rt-----RECOMPENSAS-----";
+        output<<"\n\t-----RECOMPENSAS-----";
         for (int i=0;i<gandalf.recompensas.size();i++)
             output <<" "<<gandalf.recompensas[i];
             

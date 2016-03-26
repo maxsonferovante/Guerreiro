@@ -77,7 +77,7 @@ const Espartano& Espartano::operator=(const Espartano &espartano)
 }
 ostream & operator<<(ostream &output, const Espartano & espartano)
 {
-        output <<"\n\t>>>>>>> Guerreiro Espartano <<<<<<";
+        output <<"\n\t>>>>>>> GUERREIRO ESPARTANO <<<<<<";
         output <<"\nNome: "<<espartano.nomedoPersonagem;
         output <<"\nAgilidade: "<<espartano.agility;
         output <<"\nArmadura: "<<espartano.armor;
@@ -92,7 +92,7 @@ ostream & operator<<(ostream &output, const Espartano & espartano)
         output <<"\nComprimento: "<<espartano.espadadoGuerreiro->getComprimentodaEspada();
         output <<"\nEmpunhada (1 - SIM ou 0 - NAO):"<<espartano.espadadoGuerreiro->getEmpunhada();
         
-        output<<"\n\rt-----RECOMPENSAS-----";
+        output<<"\n\t-----RECOMPENSAS-----";
         for (int i=0;i<espartano.recompensas.size();i++)
             output <<" "<<espartano.recompensas[i];
             

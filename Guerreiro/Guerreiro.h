@@ -32,7 +32,7 @@ public:
     void ataqueEspadaGuerreiro(int &);
     
     void adicionarRecompensas(float);
-    void aumentarXp();
+    void aumentarXp(int = 1);
     
     static void ordenarArmaduraVestida();
     static void desordenarArmaduraVestida();

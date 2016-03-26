@@ -19,12 +19,15 @@ void Mago::adicionarRecompensas(float recompensa)
 {
     this->recompensas.push_back(recompensa); // A implementação mais simples da minha vida :D .
 }
-void Mago::aumentarXp()
+void Mago::aumentarXp(int ganho)
 {
-    this->life += this->life * ( ( this->IncrementoLife + this->xp ) / 100 );
-    this->mana += this->mana * ( ( this->IncrementoMana + this->xp ) / 100 );
-    this->intelligence += this->intelligence * ( ( this->intelligence + this->xp ) / 100 );
+    this->life += this->life * ( ganho *( ( this->IncrementoLife + this->xp ) / 100 ));
+    this->mana += this->mana * ( ganho *( ( this->IncrementoMana + this->xp ) / 100 ));
+    this->intelligence += this->intelligence * ( ganho *( ( this->IncrementoIntelligence + this->xp ) / 100 ));
     
-    this->xp++;
+    if (ganho == 1)
+        this->xp++;
+    else
+        this->xp = ganho;
 }
 

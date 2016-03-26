@@ -77,13 +77,17 @@ void Guerreiro::adicionarRecompensas(float recompensa)
 {
     this->recompensas.push_back(recompensa);
 }
-void Guerreiro::aumentarXp()
+void Guerreiro::aumentarXp(int ganho)
 {
-    this->life += this->life * ( ( this->IncrementoLife + this->xp ) / 100 );
-    this->strenght += this->strenght * ( ( this->IncrementoStrenght + this->xp ) / 100);
-    this->agility += this->agility * ( ( this->IncrementoAgility + this->xp ) /100);
-    this->armor += this->armor* ( ( this->IncrementoArmor + this->xp ) /100);
-    this->xp++;
+    this->life += this->life * ( ganho *( ( this->IncrementoLife + this->xp ) / 100 ));
+    this->strenght += this->strenght * ( ganho * ( ( this->IncrementoStrenght + this->xp ) / 100));
+    this->agility += this->agility * ( ganho *( ( this->IncrementoAgility + this->xp ) /100));
+    this->armor += this->armor * ( ganho * ( ( this->IncrementoArmor + this->xp ) /100));
+    
+    if (ganho == 1)
+        this->xp++;
+    else
+        this->xp = ganho;
 }
 void Guerreiro::ordenarArmaduraVestida()
 {

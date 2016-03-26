@@ -15,6 +15,9 @@ Personagem::~Personagem(){
     
 }
 
-string Personagem::getNome() { return this->nomedoPersonagem; };
-
+int Personagem::getLife() { return this->life; }
+string Personagem::getNome() { return this->nomedoPersonagem; }
 int Personagem::getXp() { return this->xp; };
+
+void Personagem::setXp(int novo_xp) { this->xp += novo_xp; }
+void Personagem::setLife(int nova_vida) { this->life = nova_vida; }
